@@ -3,115 +3,149 @@ import config
 from openai import OpenAI
 from datetime import datetime
 
-
 def analyze():
+    # --- 1. 读取数据 ---
     try:
         with open(config.RAW_NEWS_FILE, 'r', encoding='utf-8') as f:
             news_items = json.load(f)
     except:
-        print("无数据文件。")
+        print("错误：无法读取数据文件，请先运行爬虫。")
         return
 
     if not news_items:
-        print("数据为空。")
+        print("错误：数据为空，请先运行爬虫。")
         return
 
     print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
 
-    # 构造输入文本，格式：ID. [来源] 标题 (链接)
-    # 限制前80条，防止超过大模型处理上限
+    # --- 2. 构造 Prompt 输入 ---
     input_text = "\n".join(
         [f"{i + 1}. [{x['source']}] {x['title']} (URL: {x['link']})" for i, x in enumerate(news_items[:80])])
 
+    # --- 3. 定义 Prompt (保留核心逻辑 + 钛合金实验室风格) ---
     prompt = f"""
-    【角色设定】
-    你是一名南非国电信行业的市场分析师和咨询师，专注于南非电信市场。
+    【角色设定】南非电信行业的资深市场分析师和战略顾问。
+    【风格】：**专业**，像一位精通南非市场的电信分析咨询师在做分享。
 
     【输入数据】
     {input_text}
 
     【任务要求】
-    请用**中文**撰写《南非电信行业市场日报》。
+    用**中文**撰写《南非电信行业市场日报》。先概括新闻，再**深度分析**、**趋势判断**以及**对运营商的思考和建议**。
 
-    ⚠️⚠️ **严格格式要求 (Strict Format Rules)** ⚠️⚠️
+    ⚠️⚠️ **严格格式要求 (邮件安全版)** ⚠️⚠️
     1. **所有引用的新闻，必须在文字后附带原文链接！**
-    2. 链接格式统一为：`<a href="URL_HERE" target="_blank" style="color:#c0392b;text-decoration:none;">[原文]</a>`
-    3. 如果没有提到具体新闻，不要编造链接。
+    2. 链接格式：`<a href="URL" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>`
+    3. **直接输出 HTML 代码**，使用内联 CSS (Inline CSS)，因为邮件不支持外部样式表。
+    4. 严格按照下方的【HTML 模板】结构填充内容。
 
-    【报告结构】
-    1. **今日头条深度解读 (Top Story)**：
-       - 挑选对南非电信行业(5G/光纤/家宽/资费/运营商等、MTN/Vodacom/Telkom/Rain/Vuma等)影响最大的三件事。
-       - 深度分析背景、竞对影响(MTN/Vodacom/Telkom/Rain/Vuma等)和用户影响。
-       - **不要只是复述新闻，同时需要用你的能力进行洞察和分析**
-       - **必须附带该新闻的原文链接**。
+【报告结构与内容指南】
 
-    2. **关键动态 (Key Updates)**：
-       - 筛选 3-5 条移动网络、光纤、家宽、FWA、频谱等动态。
+    1. **AI 市场洞察 (Market Pulse)**
+       - 对今日新闻进行全局化的汇总理解。
+       - 输出两到三句市场动态的专业总结。
+       - **重点**：结合今日新闻，给出对运营商（如 MTN/Vodacom/Rain/Telkom）的一句话战略思考或建议。
+
+    2. **今日头条深度解读 (Top Stories)**
+       - 挑选影响最大的 **3件事**，优先聚焦南非电信行业。
+       - **解读要求**：
+         - **背景**：简述发生了什么。
+         - **影响分析**：这对行业意味着什么？
+         - **一句话建议**：(例如：Vodacom 应如何应对？Rain 需要注意什么？)
+       - **必须附带原文链接**。
+
+    3. **关键动态 (Key Updates)**
+       - **电信行业新闻逐条列出**，如45G，家宽，光纤、FWA、频谱、资费、ICASA等。
        - 每条一句话摘要 + **[原文]链接**。
 
-    3. **其他科技速览 (Tech Briefs)**：
+    4. **科技速览 (Tech Briefs)**
        - 3-5 条值得关注的通用科技/政策新闻。
        - 每条一句话摘要 + **[原文]链接**。
 
-    4. **分析师辣评 (Analyst Take)**：
-       - 两到三句对市场趋势的犀利总结。
+    【HTML 输出模板 (请复刻此结构和Style)】
+    
+    <div style="background-color: #f1f5f9; border-left: 4px solid #0ea5e9; padding: 15px 20px; margin-bottom: 30px; border-radius: 4px;">
+        <h3 style="margin-top: 0; color: #0f172a; font-family: 'Segoe UI', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
+            🤖 AI Market Pulse
+        </h3>
+        <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
+            这里填写你的市场洞察和犀利点评...
+        </p>
+    </div>
 
-    【输出HTML示例】
-    (直接输出HTML代码，不要Markdown)
-    <div class="top-story">
-        <h3>新闻标题 <a href="...">[原文]</a></h3>
-        <p><strong>背景：</strong>...</p>
+    <div style="margin-bottom: 30px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff;">
+        <div style="display: inline-block; background-color: #ef4444; color: white; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px;">TOP STORY</div>
+        <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 20px; font-family: 'Segoe UI', sans-serif;">
+            新闻标题 <a href="..." style="color: #2563eb; text-decoration: none; font-size: 16px;">[原文]</a>
+        </h3>
+        <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 8px;">
+            <strong>📊 背景与影响：</strong> 这里写深度分析...
+        </p>
+        <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 14px; margin-top: 10px;">
+            💡 <strong>战略建议：</strong> 这里写给运营商的具体行动建议...
+        </div>
     </div>
-    <div class="section">
-        <h4>📡 关键动态</h4>
-        <ul>
-            <li><strong>标题</strong>: 摘要内容 <a href="链接地址" target="_blank">[原文]</a></li>
-            <li><strong>标题</strong>: 摘要内容 <a href="链接地址" target="_blank">[原文]</a></li>
-        </ul>
-    </div>
-    ...
+
+    <h3 style="border-bottom: 2px solid #334155; padding-bottom: 8px; margin-top: 40px; color: #334155; font-size: 18px;">
+        📡 关键动态 (Key Updates)
+    </h3>
+    <ul style="padding-left: 20px; color: #334155; line-height: 1.8;">
+        <li style="margin-bottom: 8px;">
+            <strong>[分类]</strong> 新闻摘要... <a href="..." style="color: #2563eb; text-decoration: none;">[原文]</a>
+        </li>
+    </ul>
+
+    <h3 style="border-bottom: 2px solid #334155; padding-bottom: 8px; margin-top: 40px; color: #334155; font-size: 18px;">
+        🚀 科技速览 (Tech Briefs)
+    </h3>
+    <ul style="padding-left: 20px; color: #334155; line-height: 1.8;">
+        <li style="margin-bottom: 8px;">
+            新闻摘要... <a href="..." style="color: #2563eb; text-decoration: none;">[原文]</a>
+        </li>
+    </ul>
     """
 
-    print("正在进行深度分析与链接匹配...")
+    print("正在进行深度分析与链接匹配 (AI Mode)...")
     try:
         client = OpenAI(api_key=config.LLM_API_KEY, base_url=config.LLM_BASE_URL)
         resp = client.chat.completions.create(
             model=config.LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=2500  # 增加输出长度
+            max_tokens=3500 
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-        # 注入 CSS 样式
+        # ================= 邮件包装壳 (Email Wrapper - 修复了这里的断裂) =================
         html = f"""
         <!DOCTYPE html>
-        <html><head><meta charset="utf-8"><style>
-        body {{ font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; padding: 20px; color: #333; }}
-        .container {{ max-width: 700px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }}
-        h1 {{ color: #b71c1c; border-bottom: 2px solid #eee; padding-bottom: 10px; text-align:center; }}
-        .meta {{ text-align: center; color: #888; font-size: 12px; margin-bottom: 20px; }}
-        .top-story {{ background: #fff8e1; padding: 20px; border-left: 5px solid #ffc107; margin-bottom: 25px; border-radius: 4px; }}
-        .top-story h3 {{ margin-top: 0; color: #e65100; }}
-        .section h4 {{ color: #2c3e50; border-bottom: 1px dashed #ddd; padding-bottom: 8px; margin-top: 30px; font-size: 18px; }}
-        ul {{ padding-left: 20px; line-height: 1.6; }}
-        li {{ margin-bottom: 12px; }}
-        a {{ font-weight: bold; }}
-        a:hover {{ text-decoration: underline; }}
-        .analyst-take {{ margin-top: 40px; background: #e8f5e9; padding: 20px; border-radius: 8px; color: #2e7d32; font-weight: bold; text-align: center; font-size: 16px; border: 1px solid #c8e6c9; }}
-        .footer {{ margin-top: 30px; font-size: 12px; color: #aaa; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }}
-        </style></head><body>
-        <div class="container">
-            <h1>🇿🇦 南非电信市场日报</h1>
-            <div class="meta">📅 {datetime.now().strftime('%Y-%m-%d')} | 📍 Johannesburg | 🤖 AI Analysis</div>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #334155;">
+            
+            <div style="max-width: 650px; margin: 0 auto; padding: 40px 20px;">
+                
+                <div style="text-align: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px; margin-bottom: 30px;">
+                    <h1 style="margin: 0; color: #0f172a; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">
+                        🇿🇦 SOUTH AFRICA TELECOM DAILY
+                    </h1>
+                    <p style="margin-top: 8px; color: #64748b; font-family: 'Consolas', monospace; font-size: 12px; letter-spacing: 1px;">
+                        DATE: {datetime.now().strftime('%Y-%m-%d')} | INTELLIGENCE REPORT
+                    </p>
+                </div>
 
-            {content}
+                {content}
 
-            <div class="footer">
-                Powered by Huawei Cloud ECS & DeepSeek<br>
-                Based on: MyBroadband, TechCentral, ITWeb
+                <div style="margin-top: 50px; border-top: 1px solid #f1f5f9; padding-top: 20px; text-align: center; color: #94a3b8; font-size: 11px; font-family: 'Consolas', monospace;">
+                    Powered by AI Agent (DeepSeek) | Confidential
+                </div>
             </div>
-        </div></body></html>
+            
+        </body>
+        </html>
         """
 
         with open(config.REPORT_FILE, 'w', encoding='utf-8') as f:
@@ -119,7 +153,6 @@ def analyze():
         print(f"分析完成。HTML报告大小: {len(html)} 字符")
     except Exception as e:
         print(f"分析失败: {e}")
-
 
 if __name__ == "__main__":
     analyze()
