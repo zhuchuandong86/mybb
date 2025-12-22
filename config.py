@@ -1,22 +1,24 @@
-%%writefile config.py
 import os
 
-# ================= 用户配置区 (修改这里) =================
+# ================= 用户配置区 (从环境变量读取) =================
 
-# 1. 大模型配置 (建议使用 DeepSeek)
-LLM_API_KEY = "sk-dadd54e10368479087e11eeb5f7522ef"  # 您的真实 Key
-LLM_BASE_URL = "https://api.deepseek.com"    # API 地址
-LLM_MODEL = "deepseek-chat"                  # 模型名称
+# 1. 大模型配置
+# os.environ.get("变量名") 会去读取系统里的变量，而不是写死在文件里
+LLM_API_KEY = os.environ.get("LLM_API_KEY") 
+LLM_BASE_URL = "https://api.deepseek.com"    # 这个地址是非敏感信息，可以直接写
+LLM_MODEL = "deepseek-chat"                  # 模型名也可以直接写
 
 # 2. 邮箱配置
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = "zhuchuandong@gmail.com"        # 发件账号
-SENDER_PASSWORD = "eupksymngvybzuac"        # 应用专用密码
-# 接收人列表 (用英文逗号隔开)
-RECEIVER_EMAIL = "zhuchuandong@huawei.com"
+# 邮箱和密码都要隐藏
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL")       
+SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD") 
 
-# ================= 系统配置区 (不要动) =================
+# 接收人也可以放入变量，或者如果固定的话写死也行（邮箱地址通常不算最高机密，但隐藏更好）
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL", "zhuchuandong@huawei.com") 
+
+# ================= 系统配置区 =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 RAW_NEWS_FILE = os.path.join(DATA_DIR, "raw_news.json")
