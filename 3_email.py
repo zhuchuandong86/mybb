@@ -18,7 +18,7 @@ def send():
     msg = MIMEMultipart()
     msg['From'] = config.SENDER_EMAIL
     msg['To'] = ",".join(receivers)
-    msg['Subject'] = f"【电信早报】南非市场深度分析 ({datetime.now().strftime('%Y-%m-%d')})"
+    msg['Subject'] = f"【电信早报】南非电信市场新闻分析 ({datetime.now().strftime('%Y-%m-%d')})"
     msg.attach(MIMEText(html, 'html'))
 
     try:
