@@ -1,6 +1,5 @@
 #!/bin/bash
 # 切换到目录
-cd /home/ubuntu/daily_bot
 # 激活环境
 source venv/bin/activate
 # 记录开始时间
