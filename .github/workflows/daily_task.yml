@@ -1,0 +1,55 @@
+name: Daily Scrape and Email
+
+on:
+  schedule:
+    # GitHub Actions 使用 UTC 时间。
+    # 南非标准时间 (SAST) 是 UTC+2。
+    # 所以南非 08:30 = UTC 06:30。
+    - cron: '30 6 * * *'
+  
+  # 允许你手动点击按钮测试运行 (非常重要，用于调试)
+  workflow_dispatch:
+
+jobs:
+  run-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' # 根据你的代码需求调整版本
+
+      # 3. 安装依赖库
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # 如果你有 requirements.txt，请取消下面这行的注释
+          # pip install -r requirements.txt
+          # 如果没有，请在这里手动列出需要的库，例如：
+          pip install requests pandas beautifulsoup4
+
+  # 4. 运行抓取脚本
+      - name: Run Scraper
+        run: python 1_scrape.py
+
+      # 5. 运行分析脚本
+      - name: Run Analyze
+        env:
+          # 格式是：环境变量名: ${{ secrets.GitHub里存的名字 }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python 2_analyze.py
+
+      # 6. 发送邮件
+      - name: Send Email
+        env:
+          # 把所有需要的变量都注入进去
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python 3_email.py
