@@ -30,9 +30,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # 如果你有 requirements.txt，请取消下面这行的注释
-          # pip install -r requirements.txt
+          pip install -r requirements.txt
           # 如果没有，请在这里手动列出需要的库，例如：
-          pip install requests pandas beautifulsoup4
+          # pip install requests pandas beautifulsoup4
 
   # 4. 运行抓取脚本
       - name: Run Scraper
