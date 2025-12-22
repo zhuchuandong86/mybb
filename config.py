@@ -16,7 +16,7 @@ SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
 SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD") 
 
 # 接收人也可以放入变量，或者如果固定的话写死也行（邮箱地址通常不算最高机密，但隐藏更好）
-RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL", "zhuchuandong@huawei.com") 
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL", "zhuchuandong@gmail.com") 
 
 # ================= 系统配置区 =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -26,3 +26,4 @@ REPORT_FILE = os.path.join(DATA_DIR, "report.html")
 
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
+
