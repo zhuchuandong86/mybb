@@ -132,7 +132,7 @@ def analyze():
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-# ================= 4. 生成 HTML 报告 =================
+# ================= 4. 生成 HTML 报告 (修复排版版) =================
         html = f"""
         <!DOCTYPE html>
         <html>
@@ -153,9 +153,14 @@ def analyze():
                     </p>
                 </div>
 
-                {content}
+                <div style="line-height: 1.6;">
+                    {content}
+                </div>
 
-                <div style="margin-top: 50px; border-top: 1px solid #f1f5f9; padding-top: 20px; text-align: center; color: #94a3b8; font-size: 11px; font-family: 'Consolas', monospace;">
+                <br style="clear: both;" />
+                <div style="height: 30px; width: 100%; clear: both;"></div>
+
+                <div style="border-top: 1px solid #f1f5f9; padding-top: 20px; text-align: center; color: #94a3b8; font-size: 11px; font-family: 'Consolas', monospace;">
                     Powered by AI Agent (DeepSeek) | Confidential
                 </div>
             </div>
