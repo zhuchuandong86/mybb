@@ -18,7 +18,11 @@ def send():
     msg = MIMEMultipart()
     msg['From'] = config.SENDER_EMAIL
     msg['To'] = ",".join(receivers)
-    msg['Subject'] = f"【电信早报】南非电信市场新闻分析 ({datetime.now().strftime('%Y-%m-%d')})"
+    
+    # 🔥 修改点：使用 config 中定义的动态前缀
+    # 例如：【电信月报】南非电信市场新闻分析 (2025-05-01)
+    msg['Subject'] = f"{config.REPORT_TITLE_PREFIX} 南非电信市场分析 ({datetime.now().strftime('%Y-%m-%d')})"
+    
     msg.attach(MIMEText(html, 'html'))
 
     try:
@@ -36,4 +40,5 @@ def send():
 
 if __name__ == "__main__":
     send()
+
 
