@@ -4,13 +4,34 @@ from openai import OpenAI
 from datetime import datetime
 
 def analyze():
-    # ... 读取文件代码保持不变 ...
+    # ================= 1. 读取数据 (此前丢失的部分) =================
+    try:
+        with open(config.RAW_NEWS_FILE, 'r', encoding='utf-8') as f:
+            news_items = json.load(f)
+    except FileNotFoundError:
+        print("错误：无法读取数据文件，请先运行爬虫 (1_scrape.py)。")
+        return
+    except Exception as e:
+        print(f"读取数据出错: {e}")
+        return
 
-    # --- 3. 定义 Prompt ---
-    # 🔥 修改点：根据模式动态生成 Prompt
+    if not news_items:
+        print("错误：数据为空，请先运行爬虫。")
+        return
+
+    print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
+
+    # 构造 Prompt 输入变量 (修复 NameError 的关键)
+    input_text = "\n".join(
+        [f"{i + 1}. [{x['source']}] {x['title']} (URL: {x['link']})" for i, x in enumerate(news_items[:80])]
+    )
+
+    # ================= 2. 动态 Prompt 定义 =================
     
     report_type_cn = "日报"
     focus_point = "结合今日新闻"
+    
+    # 根据 config 判断是周报还是月报
     if config.REPORT_MODE == "WEEKLY":
         report_type_cn = "周报"
         focus_point = "回顾过去一周"
@@ -19,14 +40,14 @@ def analyze():
         focus_point = "复盘上个月"
 
     prompt = f"""
-    【角色设定】南非电信行业的资深战略顾问，市场分析师。
+    【角色设定】南非电信行业的资深战略顾问。
     【当前任务】撰写《南非电信行业市场{report_type_cn}》。
     
     【输入数据】
     {input_text}
 
     【任务要求】
-    请根据{focus_point}的数据进行分析。如果是日报，重点在总结新闻和思考；如果是周报或月报，要**识别长期趋势**、**总结重大事件的影响**。
+    请根据{focus_point}的数据进行分析。如果是日报，重点在**总结新闻和思考**；如果是周报或月报，要**识别长期趋势**、**总结重大事件的影响**。
 
     ⚠️⚠️ **严格格式要求** ⚠️⚠️
     1. **所有引用的新闻，必须在文字后附带原文链接！**
@@ -34,11 +55,10 @@ def analyze():
     3. **直接输出 HTML 代码**，使用内联 CSS (Inline CSS)，因为邮件不支持外部样式表。
     4. 严格按照下方的【HTML 模板】结构填充内容。
 
-    
     【报告结构指南】
     1. **AI 市场洞察 ({config.REPORT_MODE} Pulse)**
        - {focus_point}，输出宏观总结2-3句。
-       - 给出对运营商的阶段性战略建议。
+       - 给出对运营商的阶段性战略思考和建议。
 
     2. **核心事件解读 (Top Stories)**
        - 挑选影响最大的 3 件事。优先聚焦南非电信行业。
@@ -100,6 +120,7 @@ def analyze():
     </ul>
     """
 
+    # ================= 3. 调用 AI 分析 =================
     print("正在进行深度分析与链接匹配 (AI Mode)...")
     try:
         client = OpenAI(api_key=config.LLM_API_KEY, base_url=config.LLM_BASE_URL)
@@ -111,7 +132,7 @@ def analyze():
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-        # ================= 邮件包装壳 (Email Wrapper - 修复了这里的断裂) =================
+        # ================= 4. 生成 HTML 报告 =================
         html = f"""
         <!DOCTYPE html>
         <html>
@@ -124,7 +145,7 @@ def analyze():
             <div style="max-width: 650px; margin: 0 auto; padding: 40px 20px;">
                 
                 <div style="text-align: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px; margin-bottom: 30px;">
-                    <h1 style="margin: 0; color: #0f172a; font-size: 26px; ...">
+                    <h1 style="margin: 0; color: #0f172a; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">
                         🇿🇦 SOUTH AFRICA TELECOM {config.REPORT_TYPE_EN}
                     </h1>
                     <p style="margin-top: 8px; color: #64748b; font-family: 'Consolas', monospace; font-size: 12px; letter-spacing: 1px;">
@@ -151,6 +172,3 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
-
-
-
