@@ -132,7 +132,7 @@ def analyze():
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-        # ================= 4. 生成 HTML 报告 =================
+# ================= 4. 生成 HTML 报告 =================
         html = f"""
         <!DOCTYPE html>
         <html>
@@ -172,4 +172,3 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
-
