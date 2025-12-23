@@ -4,50 +4,46 @@ from openai import OpenAI
 from datetime import datetime
 
 def analyze():
-    # --- 1. 读取数据 ---
-    try:
-        with open(config.RAW_NEWS_FILE, 'r', encoding='utf-8') as f:
-            news_items = json.load(f)
-    except:
-        print("错误：无法读取数据文件，请先运行爬虫。")
-        return
+    # ... 读取文件代码保持不变 ...
 
-    if not news_items:
-        print("错误：数据为空，请先运行爬虫。")
-        return
+    # --- 3. 定义 Prompt ---
+    # 🔥 修改点：根据模式动态生成 Prompt
+    
+    report_type_cn = "日报"
+    focus_point = "结合今日新闻"
+    if config.REPORT_MODE == "WEEKLY":
+        report_type_cn = "周报"
+        focus_point = "回顾过去一周"
+    elif config.REPORT_MODE == "MONTHLY":
+        report_type_cn = "月度深度报告"
+        focus_point = "复盘上个月"
 
-    print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
-
-    # --- 2. 构造 Prompt 输入 ---
-    input_text = "\n".join(
-        [f"{i + 1}. [{x['source']}] {x['title']} (URL: {x['link']})" for i, x in enumerate(news_items[:80])])
-
-    # --- 3. 定义 Prompt (保留核心逻辑 + 钛合金实验室风格) ---
     prompt = f"""
-    【角色设定】南非电信行业的资深市场分析师和战略顾问。
-    【风格】：**专业**，像一位精通南非市场的电信分析咨询师在做分享。
-
+    【角色设定】南非电信行业的资深战略顾问。
+    【当前任务】撰写《南非电信行业市场{report_type_cn}》。
+    
     【输入数据】
     {input_text}
 
     【任务要求】
-    用**中文**撰写《南非电信行业市场日报》。先概括新闻，再**深度分析**、**趋势判断**以及**对运营商的思考和建议**。
+    请根据{focus_point}的数据进行分析。
+    如果是周报或月报，请不要只罗列新闻，而是要**识别长期趋势**、**总结重大事件的影响**。
 
-    ⚠️⚠️ **严格格式要求 (邮件安全版)** ⚠️⚠️
+    ⚠️⚠️ **严格格式要求** ⚠️⚠️
     1. **所有引用的新闻，必须在文字后附带原文链接！**
     2. 链接格式：`<a href="URL" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>`
     3. **直接输出 HTML 代码**，使用内联 CSS (Inline CSS)，因为邮件不支持外部样式表。
     4. 严格按照下方的【HTML 模板】结构填充内容。
 
-【报告结构与内容指南】
+    
+    【报告结构指南】
+    1. **AI 市场洞察 ({config.REPORT_MODE} Pulse)**
+       - {focus_point}，输出宏观总结2-3句。
+       - 给出对运营商的阶段性战略建议。
 
-    1. **AI 市场洞察 (Market Pulse)**
-       - 对今日新闻进行全局化的汇总理解。
-       - 输出两到三句市场动态的专业总结。
-       - **重点**：结合今日新闻，给出对运营商（如 MTN/Vodacom/Rain/Telkom）的一句话战略思考或建议。
-
-    2. **今日头条深度解读 (Top Stories)**
-       - 挑选影响最大的 **3件事**，优先聚焦南非电信行业。
+    2. **核心事件解读 (Top Stories)**
+       - 挑选影响最大的 3 件事。优先聚焦南非电信行业。
+       - (如果是月报，请侧重于政策变化、财报、并购等大事件)。
        - **解读要求**：
          - **背景**：简述发生了什么。
          - **影响分析**：这对行业意味着什么？
@@ -156,3 +152,4 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
+
