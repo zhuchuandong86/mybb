@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import config
-
+import traceback # 需要在文件顶部导入
 
 def send():
     try:
@@ -29,8 +29,11 @@ def send():
         s.quit()
         print(f"邮件已发送给: {receivers}")
     except Exception as e:
-        print(f"发送失败: {e}")
+        print("❌ 发送失败，详细错误如下：")
+        print(repr(e))  # 打印完整的错误对象
+        traceback.print_exc() # 打印报错的具体位置
 
 
 if __name__ == "__main__":
     send()
+
