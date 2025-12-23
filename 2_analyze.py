@@ -84,7 +84,8 @@ def analyze():
             🤖 AI Market Pulse
         </h3>
         <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
-            这里填写你的市场洞察和专业点评...
+            这里填写你的市场洞察总结...
+            这里写对于市场和运营商的思考和建议...
         </p>
     </div>
 
@@ -97,7 +98,7 @@ def analyze():
             <strong>📊 背景与影响：</strong> 这里写深度分析...
         </p>
         <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 14px; margin-top: 10px;">
-            💡 <strong>思考和建议：</strong> 这里写给运营商的具体思考和建议...
+            💡 <strong>思考和建议：</strong> 这里写给运营商的思考和建议...
         </div>
     </div>
 
@@ -177,3 +178,4 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
+
