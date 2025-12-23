@@ -18,6 +18,30 @@ SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD")
 # 接收人也可以放入变量，或者如果固定的话写死也行（邮箱地址通常不算最高机密，但隐藏更好）
 RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL") or "zhuchuandong@gmail.com"
 
+# [打开 config.py 修改]
+
+import os
+
+# ... (保留原有的 Key 和 邮箱配置) ...
+
+# === 新增：运行模式控制 ===
+# 逻辑：优先读取环境变量，默认为 'DAILY'
+# 可选值: 'DAILY' (1天), 'WEEKLY' (7天), 'MONTHLY' (30天)
+REPORT_MODE = os.environ.get("REPORT_MODE", "DAILY")
+
+# 根据模式定义时间范围
+if REPORT_MODE == "MONTHLY":
+    TIME_RANGE = "30d"
+    REPORT_TITLE_PREFIX = "【电信月报】"
+elif REPORT_MODE == "WEEKLY":
+    TIME_RANGE = "7d"
+    REPORT_TITLE_PREFIX = "【电信周报】"
+else:
+    TIME_RANGE = "1d"
+    REPORT_TITLE_PREFIX = "【电信日报】"
+
+# ... (保留原有的路径配置) ...
+
 # ================= 系统配置区 =================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -26,5 +50,6 @@ REPORT_FILE = os.path.join(DATA_DIR, "report.html")
 
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
+
 
 
