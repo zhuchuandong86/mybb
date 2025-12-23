@@ -125,8 +125,8 @@ def analyze():
             <div style="max-width: 650px; margin: 0 auto; padding: 40px 20px;">
                 
                 <div style="text-align: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 30px; margin-bottom: 30px;">
-                    <h1 style="margin: 0; color: #0f172a; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">
-                        🇿🇦 SOUTH AFRICA TELECOM DAILY
+                    <h1 style="margin: 0; color: #0f172a; font-size: 26px; ...">
+                        🇿🇦 SOUTH AFRICA TELECOM {config.REPORT_TYPE_EN}
                     </h1>
                     <p style="margin-top: 8px; color: #64748b; font-family: 'Consolas', monospace; font-size: 12px; letter-spacing: 1px;">
                         DATE: {datetime.now().strftime('%Y-%m-%d')} | INTELLIGENCE REPORT
@@ -152,4 +152,5 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
+
 
