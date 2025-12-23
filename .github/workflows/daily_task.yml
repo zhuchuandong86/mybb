@@ -1,13 +1,11 @@
-name: Daily Scrape and Email
+# [打开 .github/workflows/daily_task.yml 修改]
+
+name: Auto News Report (Daily/Weekly/Monthly)
 
 on:
   schedule:
-    # GitHub Actions 使用 UTC 时间。
-    # 南非标准时间 (SAST) 是 UTC+2。
-    # 所以南非 08:30 = UTC 06:30。
+    # 每天早上 06:30 (UTC) = 南非 08:30 运行
     - cron: '30 6 * * *'
-  
-  # 允许你手动点击按钮测试运行 (非常重要，用于调试)
   workflow_dispatch:
 
 jobs:
@@ -15,40 +13,53 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 检出代码
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9' # 根据你的代码需求调整版本
+          python-version: '3.9'
 
-      # 3. 安装依赖库
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # 如果你有 requirements.txt，请取消下面这行的注释
           pip install -r requirements.txt
-          # 如果没有，请在这里手动列出需要的库，例如：
-          # pip install requests pandas beautifulsoup4
 
-  # 4. 运行抓取脚本
+      # === 🔥 核心修改：智能判断运行模式 ===
+      - name: Determine Run Mode
+        id: set_mode
+        run: |
+          # 获取当前日期的“日”(01-31) 和 “周几”(1-7, 1是周一)
+          DAY_OF_MONTH=$(date +%d)
+          DAY_OF_WEEK=$(date +%u)
+          
+          if [ "$DAY_OF_MONTH" == "01" ]; then
+            echo "Today is the 1st. Mode: MONTHLY"
+            echo "MODE=MONTHLY" >> $GITHUB_ENV
+          elif [ "$DAY_OF_WEEK" == "1" ]; then
+            echo "Today is Monday. Mode: WEEKLY"
+            echo "MODE=WEEKLY" >> $GITHUB_ENV
+          else
+            echo "Normal day. Mode: DAILY"
+            echo "MODE=DAILY" >> $GITHUB_ENV
+          fi
+
+      # 运行脚本时，Mode 会自动注入到 config.py 中
       - name: Run Scraper
+        env:
+          REPORT_MODE: ${{ env.MODE }}
         run: python 1_scrape.py
 
-      # 5. 运行分析脚本
       - name: Run Analyze
         env:
-          # 格式是：环境变量名: ${{ secrets.GitHub里存的名字 }}
+          REPORT_MODE: ${{ env.MODE }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
         run: python 2_analyze.py
 
-      # 6. 发送邮件
       - name: Send Email
         env:
-          # 把所有需要的变量都注入进去
+          REPORT_MODE: ${{ env.MODE }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
