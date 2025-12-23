@@ -77,22 +77,32 @@ def scrape_direct_rss(source_name, rss_url):
         
     return articles
 
+# ... 头部 import 保持不变 ...
+
+# 修改 scrape_all 函数
 def scrape_all():
     all_articles = []
     
-    # === 1. 使用 Google News 抓取的源 (MyBB 和 ITWeb 目前正常) ===
+    # 🔥 修改点：从 config 读取时间范围
+    current_days = config.TIME_RANGE  
+    print(f"当前运行模式: {config.REPORT_MODE}, 抓取范围: {current_days}")
+
+    # === 1. Google News 源 ===
     google_sources = [
         {"name": "MyBroadband", "query": "site:mybroadband.co.za"},
         {"name": "ITWeb",       "query": "site:itweb.co.za"}
     ]
 
     for src in google_sources:
-        news = scrape_google_rss(src["name"], src["query"], days="1d")
+        # 🔥 修改点：把 "1d" 替换为 current_days
+        news = scrape_google_rss(src["name"], src["query"], days=current_days)
         all_articles.extend(news)
 
-    # === 2. 使用 官方直连 RSS 抓取的源 (TechCentral) ===
-    # TechCentral 的官方 RSS 地址: https://techcentral.co.za/feed/
+    # === 2. 官方源 TechCentral ===
+    # 注意：官方RSS通常只给最新的10-20条，无法精确控制天数
+    # 如果是月报，我们可能需要多抓取一点，或者接受RSS的限制
     tc_news = scrape_direct_rss("TechCentral", "https://techcentral.co.za/feed/")
+  
     all_articles.extend(tc_news)
 
     # 去重逻辑
@@ -111,3 +121,4 @@ if __name__ == "__main__":
     with open(config.RAW_NEWS_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"\n🎉 爬虫结束，共保存 {len(data)} 条。")
+
