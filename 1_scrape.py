@@ -45,12 +45,22 @@ def scrape_google_rss(source_name, query, days="1d"):
         
     return articles
 
-def scrape_direct_rss(source_name, rss_url):
+def scrape_direct_rss(source_name, rss_url, days="1d"):
     """
     专用函数：直接抓取网站官方 RSS (解决 TechCentral Google 抓取不到的问题)
+    🔥 修改：增加时间过滤逻辑，精准控制时间范围
     """
     articles = []
-    print(f"--- 正在抓取 {source_name} (官方直连) ---")
+    print(f"--- 正在抓取 {source_name} (官方直连 / 过去 {days}) ---")
+    
+    # 1. 解析时间范围 (例如 "1d" -> 1, "7d" -> 7)
+    try:
+        days_int = int(days.replace("d", ""))
+    except ValueError:
+        days_int = 1
+
+    # 2. 计算截止时间 (使用当前时区时间)
+    cutoff_date = datetime.now().astimezone() - timedelta(days=days_int)
     
     try:
         resp = requests.get(rss_url, headers=get_headers(), timeout=20)
@@ -58,18 +68,41 @@ def scrape_direct_rss(source_name, rss_url):
             soup = BeautifulSoup(resp.content, 'xml')
             items = soup.find_all('item')
             
-            # 简单的日期过滤：只取前 15 条（通常包含最近3-5天的新闻）
-            # 这里的目的是防止抓取到太旧的新闻
-            for item in items[:15]: 
-                title = item.title.get_text(strip=True)
-                link = item.link.get_text(strip=True)
+            # 不再硬性截取前15条，而是遍历所有条目进行时间判断
+            count = 0
+            for item in items: 
+                # 解析发布时间
+                pub_date_str = item.pubDate.get_text(strip=True) if item.pubDate else None
                 
-                articles.append({
-                    "source": source_name, 
-                    "title": title, 
-                    "link": link
-                })
-            print(f"✅ {source_name}: 成功获取 {len(articles)} 条")
+                is_within_range = False
+                if pub_date_str:
+                    try:
+                        # 解析 RSS 时间 (RFC 822)
+                        article_date = email.utils.parsedate_to_datetime(pub_date_str)
+                        
+                        # 如果 article_date 没带时区，假定为当前时区（防止报错）
+                        if article_date.tzinfo is None:
+                             article_date = article_date.astimezone()
+                             
+                        # 比较时间
+                        if article_date >= cutoff_date:
+                            is_within_range = True
+                    except Exception as e:
+                        print(f"⚠️ 日期解析错误: {pub_date_str} - {e}")
+                
+                # 如果在时间范围内，则加入
+                if is_within_range:
+                    title = item.title.get_text(strip=True)
+                    link = item.link.get_text(strip=True)
+                    
+                    articles.append({
+                        "source": source_name, 
+                        "title": title, 
+                        "link": link
+                    })
+                    count += 1
+            
+            print(f"✅ {source_name}: 成功获取 {count} 条 (过滤后)")
         else:
             print(f"❌ {source_name}: 请求失败 Code {resp.status_code}")
     except Exception as e:
@@ -77,13 +110,10 @@ def scrape_direct_rss(source_name, rss_url):
         
     return articles
 
-# ... 头部 import 保持不变 ...
-
-# 修改 scrape_all 函数
 def scrape_all():
     all_articles = []
     
-    # 🔥 修改点：从 config 读取时间范围
+    # 从 config 读取时间范围
     current_days = config.TIME_RANGE  
     print(f"当前运行模式: {config.REPORT_MODE}, 抓取范围: {current_days}")
 
@@ -94,14 +124,12 @@ def scrape_all():
     ]
 
     for src in google_sources:
-        # 🔥 修改点：把 "1d" 替换为 current_days
         news = scrape_google_rss(src["name"], src["query"], days=current_days)
         all_articles.extend(news)
 
     # === 2. 官方源 TechCentral ===
-    # 注意：官方RSS通常只给最新的10-20条，无法精确控制天数
-    # 如果是月报，我们可能需要多抓取一点，或者接受RSS的限制
-    tc_news = scrape_direct_rss("TechCentral", "https://techcentral.co.za/feed/")
+    # 🔥 修改点：传入 days=current_days 参数
+    tc_news = scrape_direct_rss("TechCentral", "https://techcentral.co.za/feed/", days=current_days)
   
     all_articles.extend(tc_news)
 
@@ -121,4 +149,3 @@ if __name__ == "__main__":
     with open(config.RAW_NEWS_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"\n🎉 爬虫结束，共保存 {len(data)} 条。")
-
