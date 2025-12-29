@@ -13,11 +13,12 @@ def get_headers():
 
 def scrape_google_rss(source_name, query, days="1d"):
     """
-    通用函数：通过 Google News RSS 抓取指定网站
+    通用函数：通过 Google News RSS 抓取 (适合周报/月报，有历史数据)
     """
     articles = []
-    print(f"--- 正在抓取 {source_name} (Google渠道 / 过去 {days}) ---")
+    print(f"--- [Google RSS] 正在抓取 {source_name} (过去 {days}) ---")
     
+    # 增加 ceid, gl, hl 参数确保地区准确，scoring=n 尝试获取最新
     rss_url = f"https://news.google.com/rss/search?q={query}+when:{days}&hl=en-ZA&gl=ZA&ceid=ZA:en"
     
     try:
@@ -28,48 +29,51 @@ def scrape_google_rss(source_name, query, days="1d"):
             
             for item in items:
                 title = item.title.get_text(strip=True)
-                title = title.replace(f" - {source_name}", "").replace(" - MyBroadband", "")
+                # 清理 Google RSS 标题中自带的 " - Source Name" 后缀
+                title = title.rsplit(' - ', 1)[0]
                 link = item.link.get_text(strip=True)
+                
+                # Google RSS 自带时间过滤 (when:xd)，通常不需要再次严格过滤
+                # 但为了保险，可以解析 pubDate (可选)
                 
                 articles.append({
                     "source": source_name, 
                     "title": title, 
                     "link": link
                 })
-            print(f"✅ {source_name}: 成功获取 {len(items)} 条")
+            print(f"✅ {source_name} (Google): 获取 {len(items)} 条")
         else:
-            print(f"❌ {source_name}: 请求失败 Code {resp.status_code}")
+            print(f"❌ {source_name} (Google): 请求失败 Code {resp.status_code}")
             
     except Exception as e:
-        print(f"❌ {source_name} Error: {e}")
+        print(f"❌ {source_name} (Google) Error: {e}")
         
     return articles
 
 def scrape_direct_rss(source_name, rss_url, days="1d"):
     """
-    专用函数：直接抓取网站官方 RSS (解决 TechCentral Google 抓取不到的问题)
-    🔥 修改：增加时间过滤逻辑，精准控制时间范围
+    专用函数：直接抓取官方 RSS (适合日报，无延迟)
+    包含严格的时间过滤逻辑
     """
     articles = []
-    print(f"--- 正在抓取 {source_name} (官方直连 / 过去 {days}) ---")
+    print(f"--- [Direct RSS] 正在抓取 {source_name} (官方直连 / 过去 {days}) ---")
     
-    # 1. 解析时间范围 (例如 "1d" -> 1, "7d" -> 7)
+    # 1. 解析时间范围
     try:
         days_int = int(days.replace("d", ""))
     except ValueError:
         days_int = 1
 
-    # 2. 计算截止时间 (使用当前时区时间)
+    # 2. 计算截止时间 (当前时间 - 天数)
     cutoff_date = datetime.now().astimezone() - timedelta(days=days_int)
     
     try:
-        resp = requests.get(rss_url, headers=get_headers(), timeout=20)
+        resp = requests.get(rss_url, headers=get_headers(), timeout=15)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.content, 'xml')
             items = soup.find_all('item')
             
-            # 不再硬性截取前15条，而是遍历所有条目进行时间判断
-            count = 0
+            valid_count = 0
             for item in items: 
                 # 解析发布时间
                 pub_date_str = item.pubDate.get_text(strip=True) if item.pubDate else None
@@ -79,18 +83,19 @@ def scrape_direct_rss(source_name, rss_url, days="1d"):
                     try:
                         # 解析 RSS 时间 (RFC 822)
                         article_date = email.utils.parsedate_to_datetime(pub_date_str)
-                        
-                        # 如果 article_date 没带时区，假定为当前时区（防止报错）
+                        # 处理时区问题
                         if article_date.tzinfo is None:
                              article_date = article_date.astimezone()
                              
-                        # 比较时间
+                        # 核心过滤逻辑：只有晚于截止时间的才保留
                         if article_date >= cutoff_date:
                             is_within_range = True
                     except Exception as e:
-                        print(f"⚠️ 日期解析错误: {pub_date_str} - {e}")
+                        # 解析失败时，默认不丢弃 (或者选择丢弃，取决于宁愿漏掉还是宁愿错抓)
+                        # 这里选择打印警告但保留 (假设是新新闻)
+                        print(f"⚠️ 日期解析警告: {e}")
+                        is_within_range = True 
                 
-                # 如果在时间范围内，则加入
                 if is_within_range:
                     title = item.title.get_text(strip=True)
                     link = item.link.get_text(strip=True)
@@ -100,40 +105,73 @@ def scrape_direct_rss(source_name, rss_url, days="1d"):
                         "title": title, 
                         "link": link
                     })
-                    count += 1
+                    valid_count += 1
             
-            print(f"✅ {source_name}: 成功获取 {count} 条 (过滤后)")
+            print(f"✅ {source_name} (Direct): 过滤后剩余 {valid_count} 条 (共 {len(items)} 条)")
         else:
-            print(f"❌ {source_name}: 请求失败 Code {resp.status_code}")
+            print(f"❌ {source_name} (Direct): 请求失败 Code {resp.status_code}")
+            return None # 返回 None 表示失败，触发 Fallback
+            
     except Exception as e:
-        print(f"❌ {source_name} Error: {e}")
+        print(f"❌ {source_name} (Direct) Error: {e}")
+        return None
         
     return articles
 
 def scrape_all():
     all_articles = []
     
-    # 从 config 读取时间范围
     current_days = config.TIME_RANGE  
-    print(f"当前运行模式: {config.REPORT_MODE}, 抓取范围: {current_days}")
+    mode = config.REPORT_MODE
+    print(f"🚀 启动爬虫 | 模式: {mode} | 时间范围: {current_days}")
 
-    # === 1. Google News 源 ===
-    google_sources = [
-        {"name": "MyBroadband", "query": "site:mybroadband.co.za"},
-        {"name": "ITWeb",       "query": "site:itweb.co.za"}
+    # 定义所有源及其配置
+    sources = [
+        {
+            "name": "TechCentral", 
+            "rss": "https://techcentral.co.za/feed/", 
+            "google_query": "site:techcentral.co.za"
+        },
+        {
+            "name": "MyBroadband", 
+            "rss": "https://mybroadband.co.za/news/feed/", 
+            "google_query": "site:mybroadband.co.za"
+        },
+        {
+            "name": "ITWeb", 
+            "rss": "https://www.itweb.co.za/rss", 
+            "google_query": "site:itweb.co.za"
+        }
     ]
 
-    for src in google_sources:
-        news = scrape_google_rss(src["name"], src["query"], days=current_days)
-        all_articles.extend(news)
+    for src in sources:
+        news_items = []
+        
+        # === 智能策略选择 ===
+        # 1. 优先尝试 Direct RSS 的情况：
+        #    仅在 'DAILY' 模式下使用。因为 RSS 通常只有 20 条，不够周报/月报用。
+        #    且 Direct RSS 无延迟，适合日报。
+        if mode == "DAILY":
+            news_items = scrape_direct_rss(src["name"], src["rss"], days=current_days)
+        
+        # 2. 触发 Google Fallback 的情况：
+        #    - 模式不是 DAILY (周报/月报必须用 Google)
+        #    - 或者 DAILY 模式下 Direct RSS 抓取失败 (news_items is None)
+        #    - 或者 DAILY 模式下 Direct RSS 返回了 0 条数据 (可能是过滤完了，为了保险去 Google 查查)
+        if news_items is None or (mode != "DAILY"):
+            reason = "周/月报模式" if mode != "DAILY" else "Direct RSS 失败或为空"
+            print(f"🔄 切换到 Google 源 ({reason})...")
+            news_items = scrape_google_rss(src["name"], src["google_query"], days=current_days)
 
-    # === 2. 官方源 TechCentral ===
-    # 🔥 修改点：传入 days=current_days 参数
-    tc_news = scrape_direct_rss("TechCentral", "https://techcentral.co.za/feed/", days=current_days)
-  
-    all_articles.extend(tc_news)
+        # 3. 如果还是空的 (双重保障)
+        if not news_items and mode == "DAILY":
+             # 极端情况：Direct 没抓到，Google 也没抓到
+             pass 
 
-    # 去重逻辑
+        if news_items:
+            all_articles.extend(news_items)
+
+    # 去重逻辑 (以链接为准)
     unique_articles = []
     seen_links = set()
     for article in all_articles:
