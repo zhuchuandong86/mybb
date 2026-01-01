@@ -4,7 +4,7 @@ from openai import OpenAI
 from datetime import datetime
 
 def analyze():
-    # ================= 1. 读取数据 (此前丢失的部分) =================
+    # ================= 1. 读取数据 (保持不变) =================
     try:
         with open(config.RAW_NEWS_FILE, 'r', encoding='utf-8') as f:
             news_items = json.load(f)
@@ -21,7 +21,7 @@ def analyze():
 
     print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
 
-    # 构造 Prompt 输入变量 (修复 NameError 的关键)
+    # 构造 Prompt 输入变量
     input_text = "\n".join(
         [f"{i + 1}. [{x['source']}] {x['title']} (URL: {x['link']})" for i, x in enumerate(news_items[:80])]
     )
@@ -31,7 +31,6 @@ def analyze():
     report_type_cn = "日报"
     focus_point = "结合今日新闻"
     
-    # 根据 config 判断是周报还是月报
     if config.REPORT_MODE == "WEEKLY":
         report_type_cn = "周报"
         focus_point = "回顾过去一周"
@@ -54,6 +53,7 @@ def analyze():
     2. 链接格式：`<a href="URL" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>`
     3. **直接输出 HTML 代码**，使用内联 CSS (Inline CSS)，因为邮件不支持外部样式表。
     4. 严格按照下方的【HTML 模板】结构填充内容。
+    5. **⚠️ 篇幅控制**：请确保“核心事件解读”言简意赅，**务必保留足够的篇幅生成“关键动态”和“科技速览”**，严禁截断。
 
     【报告结构指南】
     1. **AI 市场洞察 ({config.REPORT_MODE} Pulse)**
@@ -62,15 +62,16 @@ def analyze():
 
     2. **核心事件解读 (Top Stories)**
        - 挑选影响最大的 3 件事。优先聚焦南非电信行业。
-       - (如果是月报，请侧重于政策变化、财报、并购等大事件)。
-       - **解读要求**：
-         - **背景**：简述发生了什么。
+       - (如果是周报或月报，可以提取到5条，请侧重于政策变化、财报、并购等大事件)。
+       - **解读要求 (请保持精炼，每段不要过长)**：
+         - **背景**：简述发生了什么 (100字以内)。
          - **影响分析**：这对行业意味着什么？
          - **一句话建议**：(例如：Vodacom/MTN/Telkom/Rain，谁需要关注，如何应对，需要注意什么？)
        - **必须附带原文链接**。
 
     3. **关键动态 (Key Updates)**
        - **电信行业新闻逐条列出**，如45G，家宽，光纤、FWA、频谱、资费、ICASA等。
+       - **⚠️ 务必列出 5-8 条重要动态，不要遗漏。**
        - 每条一句话摘要 + **[原文]链接**。
 
     4. **科技速览 (Tech Briefs)**
@@ -84,7 +85,7 @@ def analyze():
             🤖 AI Market Pulse
         </h3>
         <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
-            这里填写你的市场洞察总结...同时给与运营商的思考和建议...
+            这里填写你的市场洞察总结...
         </p>
     </div>
 
@@ -97,7 +98,7 @@ def analyze():
             <strong>📊 背景与影响：</strong> 这里写深度分析...
         </p>
         <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 14px; margin-top: 10px;">
-            💡 <strong>Deepseek思考和建议：</strong> 这里写给运营商的思考和建议...
+            💡 <strong>思考和建议：</strong> 这里写给运营商的思考和建议...
         </div>
     </div>
 
@@ -128,11 +129,11 @@ def analyze():
             model=config.LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=3500 
+            max_tokens=8192  # 🔥 修改点：从3500增加到4096，防止截断
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-# ================= 4. 生成 HTML 报告 (修复排版版) =================
+# ================= 4. 生成 HTML 报告 (保持不变) =================
         html = f"""
         <!DOCTYPE html>
         <html>
@@ -177,5 +178,3 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
-
-
