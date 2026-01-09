@@ -4,7 +4,7 @@ from openai import OpenAI
 from datetime import datetime
 
 def analyze():
-    # ================= 1. 读取数据 (保持不变) =================
+    # ================= 1. 读取数据 =================
     try:
         with open(config.RAW_NEWS_FILE, 'r', encoding='utf-8') as f:
             news_items = json.load(f)
@@ -38,88 +38,105 @@ def analyze():
         report_type_cn = "月度深度报告"
         focus_point = "复盘上个月"
 
+    # 注意：在 Python f-string 中，{{ }} 会被转义为单个 { }，用于告诉 AI 这是模板占位符
     prompt = f"""
-    【角色设定】南非电信行业的资深战略顾问。
-    【当前任务】撰写《南非电信行业市场{report_type_cn}》。
-    
-    【输入数据】
-    {input_text}
+# Role
+你是一位拥有 20 年经验的**南非电信行业资深战略顾问**。你需要为企业高管撰写一份名为《南非电信行业市场{report_type_cn}》的简报。
 
-    【任务要求】
-    请根据{focus_point}的数据进行分析。如果是日报，重点在**总结新闻和思考**；如果是周报或月报，要**识别长期趋势**、**总结重大事件的影响**。
+# Input Data
+请仔细阅读以下 `<input_data>` 中的文本：
+<input_data>
+{input_text}
+</input_data>
 
-    ⚠️⚠️ **严格格式要求** ⚠️⚠️
-    1. **所有引用的新闻，必须在文字后附带原文链接！**
-    2. 链接格式：`<a href="URL" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>`
-    3. **直接输出 HTML 代码**，使用内联 CSS (Inline CSS)，因为邮件不支持外部样式表。
-    4. 严格按照下方的【HTML 模板】结构填充内容。
-    5. **⚠️ 篇幅控制**：请确保“核心事件解读”言简意赅，**务必保留足够的篇幅生成“关键动态”和“科技速览”**，严禁截断。
+# Task Overview
+你的核心任务是：基于输入数据，按照 `<report_mode>` ({focus_point}) 的要求，生成一份**HTML 格式**的专业报告。
 
-    【报告结构指南】
-    1. **AI 市场洞察 ({config.REPORT_MODE} Pulse)**
-       - {focus_point}，输出宏观总结2-3句。
-       - 给出对运营商的阶段性战略思考和建议。
+# Critical Constraints (⚠️必须严格遵守)
+<rules>
+1. **真实性验证**：所有引用的新闻，**必须**在新闻标题或摘要后附带 `<a href="...">[原文]</a>` 链接。严禁编造链接。
+2. **格式强制**：**直接输出纯 HTML 代码**，不要包含 markdown 代码块标记（如 ```html）。
+3. **样式要求**：必须使用**内联 CSS (Inline CSS)**，确保邮件客户端兼容性。请严格复刻后文提供的 `<html_template>`。
+4. **完整性优先**：必须确保输出完整的 HTML 闭合标签。如果内容过长，优先精简“深度解读”的字数，**严禁**砍掉“关键动态”或“科技速览”板块。
+</rules>
 
-    2. **核心事件解读 (Top Stories)**
-       - 挑选影响最大的 5 件事。优先聚焦南非电信行业，包括运营商，家宽，光纤，星链，手机，资费等等。
-       - (如果是周报或月报，可以提取到8-10条，请侧重于政策变化、财报、并购等大事件)。
-       - **解读要求 (请保持精炼，每段不要过长)**：
-         - **背景**：简述发生了什么 (100字以内)。
-         - **影响分析**：这对行业意味着什么？
-         - **一句话建议**：(例如：Vodacom/MTN/Telkom/Rain，谁需要关注，如何应对，需要注意什么？)
-       - **必须附带原文链接**。
+# Analysis Workflow (思维链)
+在生成 HTML 之前，请按以下逻辑处理数据（不要输出此思考过程）：
+1. **清洗**：剔除重复、无实质内容的广告或纯促销信息。
+2. **分级**：根据影响力将新闻分为 T0 (核心事件)、T1 (关键动态)、T2 (科技速览)。
+   - *T0 标准*：南非运营商相关，譬如战略、财报、业务发展、CXO发言、创新，资费、套餐、促销，5G、网络体验、网络投诉，ICASA、频谱、政策，光纤 FNO、家宽、FWA、Starlink。
+3. **分析**：针对 T0 事件，思考其对竞争格局(Market Share)和ARPU值的潜在影响。
 
-    3. **关键动态 (Key Updates)**
-       - **电信行业新闻逐条列出**，如45G，家宽，光纤、FWA、频谱、资费、ICASA等。
-       - **⚠️ 务必列出 5-8 条重要动态，不要遗漏。**
-       - 每条一句话摘要 + **[原文]链接**。
+# Output Structure & Content Guide
 
-    4. **科技速览 (Tech Briefs)**
-       - 3-5 条值得关注的通用科技/政策新闻。
-       - 每条一句话摘要 + **[原文]链接**。
+### 1. 🤖 AI Market Pulse
+- **内容**：针对 {focus_point} 的宏观总结。
+- **风格**：高屋建瓴，给出对运营商（如 Vodacom, MTN, Telkom）的阶段性战略建议（2-3句）。
 
-    【HTML 输出模板 (请复刻此结构和Style)】
-    
-    <div style="background-color: #f1f5f9; border-left: 4px solid #0ea5e9; padding: 15px 20px; margin-bottom: 30px; border-radius: 4px;">
-        <h3 style="margin-top: 0; color: #0f172a; font-family: 'Segoe UI', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
-            🤖 AI Market Pulse
-        </h3>
-        <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
-            这里填写你的市场洞察总结...
-        </p>
-    </div>
+### 2. 🔥 核心事件解读 (Top Stories)
+- **数量**：日报选 3-5 条，周/月报选 8-10 条。
+- **筛选**：优先聚焦南非本地电信（运营商、光纤 FNO、频谱、资费），其次考虑非洲和全球特别重大的时间。
+- **字段要求**：
+  - **标题**：加上原文链接。
+  - **背景**：发生了什么（<100字）。
+  - **深度分析**：对行业意味着什么？（<150字）。
+  - **建议**：用“💡”标识，针对特定运营商的思考和建议。
 
-    <div style="margin-bottom: 30px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff;">
-        <div style="display: inline-block; background-color: #ef4444; color: white; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px;">TOP STORY</div>
-        <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 20px; font-family: 'Segoe UI', sans-serif;">
-            新闻标题 <a href="..." style="color: #2563eb; text-decoration: none; font-size: 16px;">[原文]</a>
-        </h3>
-        <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 8px;">
-            <strong>📊 背景与影响：</strong> 这里写深度分析...
-        </p>
-        <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 14px; margin-top: 10px;">
-            💡 <strong>思考和建议：</strong> 这里写给运营商的思考和建议...
-        </div>
-    </div>
+### 3. ⚡ 关键动态 (Key Updates)
+- **数量**：**务必列出 5-8 条**，不可遗漏。
+- **内容**：覆盖 4G/5G、家宽、光纤、FWA、频谱、资费调整等，以及T0内未入选TOP的。
+- **格式**：每条一句话摘要 + [原文]链接。
 
-    <h3 style="border-bottom: 2px solid #334155; padding-bottom: 8px; margin-top: 40px; color: #334155; font-size: 18px;">
-        📡 关键动态 (Key Updates)
+### 4. 🌐 科技速览 (Tech Briefs)
+- **数量**：3-5 条。
+- **内容**：通用科技、AI 进展或周边政策。
+- **格式**：每条一句话摘要 + [原文]链接。
+
+# HTML Template Reference
+请使用以下 HTML 结构进行填充（你可以根据需要复制 `<div>` 块来增加新闻条目，但必须保持 CSS 样式一致）：
+
+<html_template>
+<div style="background-color: #f1f5f9; border-left: 4px solid #0ea5e9; padding: 15px 20px; margin-bottom: 30px; border-radius: 4px;">
+    <h3 style="margin-top: 0; color: #0f172a; font-family: 'Segoe UI', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
+        🤖 AI Market Pulse
     </h3>
-    <ul style="padding-left: 20px; color: #334155; line-height: 1.8;">
+    <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
+        {{这里填充市场洞察内容}}
+    </p>
+</div>
+
+<div style="margin-bottom: 25px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <div style="display: inline-block; background-color: #ef4444; color: white; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px;">TOP STORY</div>
+    <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+        {{新闻标题}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 600;">[原文]</a>
+    </h3>
+    <p style="color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+        <strong>📊 背景与影响：</strong> {{这里写深度分析}}
+    </p>
+    <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 13px; border-left: 3px solid #3b82f6;">
+        💡 <strong>思考和建议：</strong> {{这里写战略建议}}
+    </div>
+</div>
+
+<div style="margin-bottom: 30px;">
+    <h3 style="border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; color: #334155; font-family: 'Segoe UI', sans-serif;">⚡ 关键动态</h3>
+    <ul style="padding-left: 20px; color: #475569; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
         <li style="margin-bottom: 8px;">
-            <strong>[分类]</strong> 新闻摘要... <a href="..." style="color: #2563eb; text-decoration: none;">[原文]</a>
+            {{动态摘要}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>
         </li>
     </ul>
+</div>
 
-    <h3 style="border-bottom: 2px solid #334155; padding-bottom: 8px; margin-top: 40px; color: #334155; font-size: 18px;">
-        🚀 科技速览 (Tech Briefs)
-    </h3>
-    <ul style="padding-left: 20px; color: #334155; line-height: 1.8;">
-        <li style="margin-bottom: 8px;">
-            新闻摘要... <a href="..." style="color: #2563eb; text-decoration: none;">[原文]</a>
+<div style="margin-bottom: 30px; background-color: #f8fafc; padding: 15px; border-radius: 6px;">
+    <h3 style="margin-top:0; color: #475569; font-size: 16px; font-family: 'Segoe UI', sans-serif;">🌐 科技速览</h3>
+    <ul style="padding-left: 20px; color: #64748b; font-size: 13px; line-height: 1.5;">
+        <li style="margin-bottom: 5px;">
+            {{科技摘要}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none;">[原文]</a>
         </li>
     </ul>
-    """
+</div>
+</html_template>
+"""
 
     # ================= 3. 调用 AI 分析 =================
     print("正在进行深度分析与链接匹配 (AI Mode)...")
@@ -129,11 +146,12 @@ def analyze():
             model=config.LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=8192  # 🔥 修改点：从3500增加到4096，防止截断
+            max_tokens=8192  # 保持较大的 Token 以防截断
         )
+        # 清理可能存在的 markdown 标记
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-# ================= 4. 生成 HTML 报告 (保持不变) =================
+        # ================= 4. 生成 HTML 报告 =================
         html = f"""
         <!DOCTYPE html>
         <html>
@@ -178,5 +196,3 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
-
-
