@@ -64,14 +64,14 @@ def analyze():
 在生成 HTML 之前，请按以下逻辑处理数据（不要输出此思考过程）：
 1. **清洗**：剔除重复、无实质内容的广告或纯促销信息。
 2. **分级**：根据影响力将新闻分为 T0 (核心事件)、T1 (关键动态)、T2 (科技速览)。
-   - *T0 标准*：南非运营商相关，譬如战略、财报、业务发展、CXO发言、创新，资费、套餐、促销，5G、网络体验、网络投诉，ICASA、频谱、政策，光纤 FNO、家宽、FWA、Starlink。
+   - *T0 标准*：南非运营商（如Vodacom, MTN, Telkom，Rain，Openserve，Vumatel等）相关，譬如战略、财报、业务发展、CXO发言、创新，资费、套餐、促销，5G、网络体验、网络投诉，ICASA、通信部、频谱、政策，光纤 FNO、家宽、FWA、Starlink。
 3. **分析**：针对 T0 事件，思考其对竞争格局(Market Share)和ARPU值的潜在影响。
 
 # Output Structure & Content Guide
 
 ### 1. 🤖 AI Market Pulse
 - **内容**：针对 {focus_point} 的宏观总结。
-- **风格**：高屋建瓴，给出对部分运营商（如Vodacom, MTN, Telkom，Rain，Openserve，Vumatel等）的阶段性战略建议（2-3句）。
+- **风格**：高屋建瓴，给出对部分运营商的阶段性战略建议（2-3句）。
 
 ### 2. 🔥 核心事件解读 (Top Stories)
 - **数量**：日报选 3-5 条，周/月报选 8-10 条。
@@ -196,5 +196,6 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
+
 
 
