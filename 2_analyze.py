@@ -93,44 +93,44 @@ def analyze():
 - **格式**：每条一句话摘要 + [原文]链接。
 
 # HTML Template Reference
-请使用以下 HTML 结构进行填充（你可以根据需要复制 `<div>` 块来增加新闻条目，但必须保持 CSS 样式一致）：
+请使用以下 HTML 结构进行填充（CSS 已微调，请完全保持一致）：
 
 <html_template>
-<div style="background-color: #f1f5f9; border-left: 4px solid #0ea5e9; padding: 15px 20px; margin-bottom: 30px; border-radius: 4px;">
-    <h3 style="margin-top: 0; color: #0f172a; font-family: 'Segoe UI', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
+<div style="background-color: #f8fafc; border-left: 4px solid #0ea5e9; padding: 16px 20px; margin-bottom: 30px; border-radius: 4px;">
+    <h3 style="margin-top: 0; color: #0f172a; font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
         🤖 AI Market Pulse
     </h3>
-    <p style="font-family: 'Consolas', 'Monaco', monospace; font-size: 14px; color: #334155; line-height: 1.6; margin-bottom: 0;">
+    <p style="font-family: 'Segoe UI', sans-serif; font-size: 15px; color: #334155; line-height: 1.7; margin-bottom: 0;">
         {{这里填充市场洞察内容}}
     </p>
 </div>
 
-<div style="margin-bottom: 25px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<div style="margin-bottom: 25px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
     <div style="display: inline-block; background-color: #ef4444; color: white; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px;">TOP STORY</div>
-    <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 18px; font-family: 'Segoe UI', sans-serif; line-height: 1.4;">
+    <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 20px; font-family: 'Segoe UI', sans-serif; line-height: 1.4; font-weight: 600;">
         {{新闻标题}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 600;">[原文]</a>
     </h3>
-    <p style="color: #475569; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+    <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 12px;">
         <strong>📊 背景与影响：</strong> {{这里写深度分析}}
     </p>
-    <div style="background-color: #eff6ff; padding: 10px; border-radius: 4px; color: #1e40af; font-size: 13px; border-left: 3px solid #3b82f6;">
+    <div style="background-color: #eff6ff; padding: 12px; border-radius: 6px; color: #1e40af; font-size: 14px; border-left: 3px solid #3b82f6; line-height: 1.5;">
         💡 <strong>思考和建议：</strong> {{这里写战略建议}}
     </div>
 </div>
 
 <div style="margin-bottom: 30px;">
-    <h3 style="border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; color: #334155; font-family: 'Segoe UI', sans-serif;">⚡ 关键动态</h3>
-    <ul style="padding-left: 20px; color: #475569; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
-        <li style="margin-bottom: 8px;">
+    <h3 style="border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; color: #334155; font-family: 'Segoe UI', sans-serif; font-size: 18px; font-weight: 600;">⚡ 关键动态</h3>
+    <ul style="padding-left: 20px; color: #475569; font-family: 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6;">
+        <li style="margin-bottom: 10px;">
             {{动态摘要}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none; font-weight: 600;">[原文]</a>
         </li>
     </ul>
 </div>
 
-<div style="margin-bottom: 30px; background-color: #f8fafc; padding: 15px; border-radius: 6px;">
-    <h3 style="margin-top:0; color: #475569; font-size: 16px; font-family: 'Segoe UI', sans-serif;">🌐 科技速览</h3>
-    <ul style="padding-left: 20px; color: #64748b; font-size: 13px; line-height: 1.5;">
-        <li style="margin-bottom: 5px;">
+<div style="margin-bottom: 30px; background-color: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #f1f5f9;">
+    <h3 style="margin-top:0; color: #64748b; font-size: 16px; font-family: 'Segoe UI', sans-serif; font-weight: 600;">🌐 科技速览</h3>
+    <ul style="padding-left: 20px; color: #64748b; font-family: 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.5;">
+        <li style="margin-bottom: 6px;">
             {{科技摘要}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none;">[原文]</a>
         </li>
     </ul>
@@ -146,9 +146,8 @@ def analyze():
             model=config.LLM_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=8192  # 保持较大的 Token 以防截断
+            max_tokens=8192
         )
-        # 清理可能存在的 markdown 标记
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
         # ================= 4. 生成 HTML 报告 =================
@@ -167,7 +166,7 @@ def analyze():
                     <h1 style="margin: 0; color: #0f172a; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">
                         🇿🇦 SOUTH AFRICA TELECOM {config.REPORT_TYPE_EN}
                     </h1>
-                    <p style="margin-top: 8px; color: #64748b; font-family: 'Consolas', monospace; font-size: 12px; letter-spacing: 1px;">
+                    <p style="margin-top: 8px; color: #64748b; font-family: 'Segoe UI', monospace; font-size: 12px; letter-spacing: 1px; font-weight: 500;">
                         DATE: {datetime.now().strftime('%Y-%m-%d')} | INTELLIGENCE REPORT
                     </p>
                 </div>
@@ -179,7 +178,7 @@ def analyze():
                 <br style="clear: both;" />
                 <div style="height: 30px; width: 100%; clear: both;"></div>
 
-                <div style="border-top: 1px solid #f1f5f9; padding-top: 20px; text-align: center; color: #94a3b8; font-size: 11px; font-family: 'Consolas', monospace;">
+                <div style="border-top: 1px solid #f1f5f9; padding-top: 20px; text-align: center; color: #94a3b8; font-size: 12px; font-family: 'Segoe UI', sans-serif;">
                     Powered by AI Agent (DeepSeek) | Confidential
                 </div>
             </div>
@@ -196,7 +195,3 @@ def analyze():
 
 if __name__ == "__main__":
     analyze()
-
-
-
-
