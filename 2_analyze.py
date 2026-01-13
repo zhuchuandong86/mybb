@@ -105,7 +105,7 @@ def analyze():
     </p>
 </div>
 
-<div style="margin-bottom: 25px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<div style="margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
     <div style="display: inline-block; background-color: #ef4444; color: white; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px;">TOP STORY</div>
     <h3 style="margin: 0 0 10px 0; color: #1e293b; font-size: 20px; font-family: 'Segoe UI', sans-serif; line-height: 1.4; font-weight: 600;">
         {{新闻标题}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none; font-size: 14px; font-weight: 600;">[原文]</a>
@@ -129,7 +129,7 @@ def analyze():
 
 <div style="margin-bottom: 30px; background-color: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #f1f5f9;">
     <h3 style="margin-top:0; color: #64748b; font-size: 16px; font-family: 'Segoe UI', sans-serif; font-weight: 600;">🌐 科技速览</h3>
-    <ul style="padding-left: 20px; color: #64748b; font-family: 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.5;">
+    <ul style="padding-left: 20px; color: #64748b; font-family: 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6;">
         <li style="margin-bottom: 6px;">
             {{科技摘要}} <a href="{{URL}}" style="color: #2563eb; text-decoration: none;">[原文]</a>
         </li>
