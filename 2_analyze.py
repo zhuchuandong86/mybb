@@ -21,9 +21,16 @@ def analyze():
 
     print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
 
-    # 构造 Prompt 输入变量
+    # 🔥 核心修改：构造 Prompt 输入变量时，加入“摘要”字段
+    # 使用 .get('description', '') 防止旧数据报错
+    # 限制摘要长度为 200 字符，防止 Token 爆炸
     input_text = "\n".join(
-        [f"{i + 1}. [{x['source']}] {x['title']} (URL: {x['link']})" for i, x in enumerate(news_items[:80])]
+        [
+            f"{i + 1}. [{x['source']}] {x['title']}\n"
+            f"   摘要: {x.get('description', '').replace('\n', ' ')[:200]}...\n"
+            f"   (URL: {x['link']})" 
+            for i, x in enumerate(news_items[:80])
+        ]
     )
 
     # ================= 2. 动态 Prompt 定义 =================
@@ -38,13 +45,12 @@ def analyze():
         report_type_cn = "月度深度报告"
         focus_point = "复盘上个月"
 
-    # 注意：在 Python f-string 中，{{ }} 会被转义为单个 { }，用于告诉 AI 这是模板占位符
     prompt = f"""
 # Role
 你是一位拥有 20 年经验的**南非电信/通信行业资深战略顾问**。你需要为企业高管撰写一份名为《南非电信行业市场{report_type_cn}》的简报。
 
 # Input Data
-请仔细阅读以下 `<input_data>` 中的文本：
+请仔细阅读以下 `<input_data>` 中的文本，每条新闻包含了**标题**和**摘要**：
 <input_data>
 {input_text}
 </input_data>
@@ -65,7 +71,7 @@ def analyze():
 1. **清洗**：剔除重复、无实质内容的广告或纯促销信息。
 2. **分级**：根据影响力将新闻分为 T0 (核心事件)、T1 (关键动态)、T2 (科技速览)。
    - *T0 标准*：南非运营商（如Vodacom, MTN, Telkom，Rain，Openserve，Vumatel等）相关，譬如战略、财报、业务发展、CXO发言、创新，资费、套餐、促销，5G、网络体验、网络投诉，ICASA、通信部、频谱、政策，光纤 FNO、家宽、FWA、Starlink。
-3. **分析**：针对 T0 事件，思考其对竞争格局(Market Share)和ARPU值的潜在影响。
+3. **分析**：针对 T0 事件，结合标题和摘要，思考其对竞争格局(Market Share)和ARPU值的潜在影响。
 
 # Output Structure & Content Guide
 
