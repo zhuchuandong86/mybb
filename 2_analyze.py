@@ -21,19 +21,28 @@ def analyze():
 
     print(f"待分析新闻数量: {len(news_items)} 条 (正在截取前80条以防Token溢出)")
 
-    # 🔥 核心修改：构造 Prompt 输入变量时，加入“摘要”字段
-    # 使用 .get('description', '') 防止旧数据报错
-    # 限制摘要长度为 200 字符，防止 Token 爆炸
-    input_text = "\n".join(
-        [
-            f"{i + 1}. [{x['source']}] {x['title']}\n"
-            f"   摘要: {x.get('description', '').replace('\n', ' ')[:200]}...\n"
-            f"   (URL: {x['link']})" 
-            for i, x in enumerate(news_items[:80])
-        ]
-    )
+    # ================= 2. 构造 Input Text (修复语法错误) =================
+    formatted_lines = []
+    for i, x in enumerate(news_items[:80]):
+        # 1. 提取并清洗摘要 (移出 f-string 以避免反斜杠报错)
+        raw_desc = x.get('description', '')
+        if raw_desc:
+            # 将换行符替换为空格，并截取前200字符
+            clean_desc = raw_desc.replace('\n', ' ').strip()[:200]
+        else:
+            clean_desc = "暂无摘要"
 
-    # ================= 2. 动态 Prompt 定义 =================
+        # 2. 拼接字符串
+        entry = (
+            f"{i + 1}. [{x['source']}] {x['title']}\n"
+            f"   摘要: {clean_desc}...\n"
+            f"   (URL: {x['link']})"
+        )
+        formatted_lines.append(entry)
+
+    input_text = "\n".join(formatted_lines)
+
+    # ================= 3. 动态 Prompt 定义 =================
     
     report_type_cn = "日报"
     focus_point = "结合今日新闻"
@@ -144,7 +153,7 @@ def analyze():
 </html_template>
 """
 
-    # ================= 3. 调用 AI 分析 =================
+    # ================= 4. 调用 AI 分析 =================
     print("正在进行深度分析与链接匹配 (AI Mode)...")
     try:
         client = OpenAI(api_key=config.LLM_API_KEY, base_url=config.LLM_BASE_URL)
@@ -156,7 +165,7 @@ def analyze():
         )
         content = resp.choices[0].message.content.replace("```html", "").replace("```", "")
 
-        # ================= 4. 生成 HTML 报告 =================
+        # ================= 5. 生成 HTML 报告 =================
         html = f"""
         <!DOCTYPE html>
         <html>
