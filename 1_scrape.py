@@ -18,7 +18,6 @@ def scrape_google_rss(source_name, query, days="1d"):
     articles = []
     print(f"--- [Google RSS] 正在抓取 {source_name} (过去 {days}) ---")
     
-    # 增加 ceid, gl, hl 参数确保地区准确，scoring=n 尝试获取最新
     rss_url = f"https://news.google.com/rss/search?q={query}+when:{days}&hl=en-ZA&gl=ZA&ceid=ZA:en"
     
     try:
@@ -33,13 +32,14 @@ def scrape_google_rss(source_name, query, days="1d"):
                 title = title.rsplit(' - ', 1)[0]
                 link = item.link.get_text(strip=True)
                 
-                # Google RSS 自带时间过滤 (when:xd)，通常不需要再次严格过滤
-                # 但为了保险，可以解析 pubDate (可选)
+                # 🔥 新增：提取摘要 (Google RSS 的 description 通常包含 HTML，get_text 会自动清理标签)
+                description = item.description.get_text(strip=True) if item.description else ""
                 
                 articles.append({
                     "source": source_name, 
                     "title": title, 
-                    "link": link
+                    "link": link,
+                    "description": description  # 保存摘要
                 })
             print(f"✅ {source_name} (Google): 获取 {len(items)} 条")
         else:
@@ -91,8 +91,6 @@ def scrape_direct_rss(source_name, rss_url, days="1d"):
                         if article_date >= cutoff_date:
                             is_within_range = True
                     except Exception as e:
-                        # 解析失败时，默认不丢弃 (或者选择丢弃，取决于宁愿漏掉还是宁愿错抓)
-                        # 这里选择打印警告但保留 (假设是新新闻)
                         print(f"⚠️ 日期解析警告: {e}")
                         is_within_range = True 
                 
@@ -100,10 +98,14 @@ def scrape_direct_rss(source_name, rss_url, days="1d"):
                     title = item.title.get_text(strip=True)
                     link = item.link.get_text(strip=True)
                     
+                    # 🔥 新增：提取摘要
+                    description = item.description.get_text(strip=True) if item.description else ""
+                    
                     articles.append({
                         "source": source_name, 
                         "title": title, 
-                        "link": link
+                        "link": link,
+                        "description": description # 保存摘要
                     })
                     valid_count += 1
             
@@ -148,25 +150,13 @@ def scrape_all():
         news_items = []
         
         # === 智能策略选择 ===
-        # 1. 优先尝试 Direct RSS 的情况：
-        #    仅在 'DAILY' 模式下使用。因为 RSS 通常只有 20 条，不够周报/月报用。
-        #    且 Direct RSS 无延迟，适合日报。
         if mode == "DAILY":
             news_items = scrape_direct_rss(src["name"], src["rss"], days=current_days)
         
-        # 2. 触发 Google Fallback 的情况：
-        #    - 模式不是 DAILY (周报/月报必须用 Google)
-        #    - 或者 DAILY 模式下 Direct RSS 抓取失败 (news_items is None)
-        #    - 或者 DAILY 模式下 Direct RSS 返回了 0 条数据 (可能是过滤完了，为了保险去 Google 查查)
         if news_items is None or (mode != "DAILY"):
             reason = "周/月报模式" if mode != "DAILY" else "Direct RSS 失败或为空"
             print(f"🔄 切换到 Google 源 ({reason})...")
             news_items = scrape_google_rss(src["name"], src["google_query"], days=current_days)
-
-        # 3. 如果还是空的 (双重保障)
-        if not news_items and mode == "DAILY":
-             # 极端情况：Direct 没抓到，Google 也没抓到
-             pass 
 
         if news_items:
             all_articles.extend(news_items)
