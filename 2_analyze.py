@@ -217,7 +217,7 @@ def analyze():
         🇿🇦 SOUTH AFRICA TELECOM {config.REPORT_TYPE_EN}
       </h1>
       <p style="margin-top: 8px; color: #64748b; font-family: 'Segoe UI', monospace; font-size: 12px; letter-spacing: 1px; font-weight: 500;">
-        DATE: {datetime.now().strftime('%Y-%m-%d')} | INTELLIGENCE REPORT
+        DATE: {datetime.now().strftime('%Y-%m-%d')} | INTELLIGENCE REPORT By deepseek-v4-flash
       </p>
     </div>
 
