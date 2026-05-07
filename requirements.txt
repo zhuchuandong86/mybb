@@ -1,5 +1,5 @@
-pandas
-beautifulsoup4
-openai
 requests
+beautifulsoup4
 lxml
+openai
+trafilatura
