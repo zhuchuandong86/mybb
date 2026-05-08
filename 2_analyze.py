@@ -123,19 +123,15 @@ def analyze():
 ## 内容完整性要求
 | 板块 | 日报 | 周报 | 月报 |
 |------|------|------|------|
-| AI Market Pulse | 3-5句 | 5-8句 | 8-10句 |
+| AI Market Pulse | 3句 | 5句 | 5-8句 |
 | 核心事件解读 T0 | 2-4条 | 4-6条 | 6-10条 |
 | 关键动态 T1 | 5-8条 | 8-12条 | 10-15条 |
-| 科技速览 T2 | ≤3条 | ≤3条 | ≤3条 |
-
-**若 T0 新闻不足**：宁可减少条数，也不要用 T1/T2 内容充数填满 T0 板块。
-**若输入数据中南非电信内容稀少**：在 AI Market Pulse 中如实说明，并解释原因。
+| 科技速览 T2 | ≤3条 | ≤5条 | ≤8条 |
 
 ## 每条 T0 必须包含：
 1. **标题** + `<a href="...">[原文]</a>` 链接（链接必须真实，来自输入数据）
 2. **事件概述**（≤120字）：发生了什么？基于全文内容，非标题推测
-3. **深度分析**（≤100字）：对南非电信竞争格局/用户/监管意味着什么？
-4. **战略建议**（用 💡 标识）：针对具体运营商的可操作建议
+3. **深度分析和战略建议**（≤100字）：对南非电信竞争格局/用户/监管意味着什么？针对具体运营商的可操作建议
 
 ## 每条 T1 格式：
 一句话摘要（含关键数字/事实）+ `<a href="...">[原文]</a>`
@@ -169,11 +165,8 @@ def analyze():
     <p style="font-family:'Segoe UI',sans-serif;font-size:14px;color:#475569;line-height:1.65;margin:0 0 12px 0;">
       <strong>📋 事件：</strong>{{事件概述，基于全文}}
     </p>
-    <p style="font-family:'Segoe UI',sans-serif;font-size:14px;color:#475569;line-height:1.65;margin:0 0 12px 0;">
-      <strong>📊 分析：</strong>{{对南非电信市场的影响}}
-    </p>
     <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:10px 14px;border-radius:4px;font-family:'Segoe UI',sans-serif;font-size:14px;color:#1d4ed8;line-height:1.6;">
-      💡 <strong>建议：</strong>{{针对具体运营商的可操作建议}}
+      💡 <strong>📊 分析建议：</strong>{{对南非电信市场的影响}}{{针对具体运营商的可操作建议}}
     </div>
   </div>
 
