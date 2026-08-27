@@ -1,0 +1,11 @@
+# 每次运行都会重新生成，不需要入库
+data/raw_news.json
+data/report.html
+
+# 但 data/history/ 要保留追踪，用于跨运行的趋势分析
+!data/history/
+!data/history/*.json
+
+__pycache__/
+*.pyc
+.env
