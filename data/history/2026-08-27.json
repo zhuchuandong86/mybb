@@ -1,0 +1,83 @@
+{
+  "date": "2026-08-27",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "The hole in the law above the Karoo",
+      "link": "https://techcentral.co.za/the-hole-in-the-law-above-the-karoo/285369/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Sarao",
+      "summary_cn": "南非射电天文台要求ICASA修订法规，以应对卫星星座对天文观测的干扰，涉及频谱监管。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.9
+    },
+    {
+      "title": "Blu Label says MTN is coming for its Capitec business",
+      "link": "https://techcentral.co.za/blu-label-says-mtn-is-coming-for-its-capitec-business/285365/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "MTN",
+      "summary_cn": "MTN计划直接与银行合作销售话费，可能影响第三方分销商Blu Label，涉及运营商渠道策略。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.85
+    },
+    {
+      "title": "Nvidia’s top AI chips are coming to a Centurion data centre",
+      "link": "https://techcentral.co.za/nvidias-top-ai-chips-are-coming-to-a-centurion-data-centre/285394/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Stratos Lab",
+      "summary_cn": "南非初创公司Stratos Lab部署英伟达B300 GPU AI云，位于Centurion数据中心，提升非洲AI算力。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9
+    },
+    {
+      "title": "Dubai data centre tycoon backs new MTN company",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOcFdLQ3UtSG9KbjRlUWNfVS1fU0xyVVhUdUFGMUNLUGdTTnNUMGVKNmltbnRhdjRKNEVuWUgtWTA1bUJWMXU0X01ERlM2QW1xNXVhSzNxR0RobWdvXzRZTV9PVkpfWTRTbzlpYkc2V2t5Z2hwcFJvSU1NUW93X1gyeGxibXg2MkFyZXlhUGNUVUZ5T1B2dEtJ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "MTN",
+      "summary_cn": "迪拜数据中心大亨支持MTN新公司，涉及MTN业务扩展。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.8
+    },
+    {
+      "title": "South Africa’s top mobile network vendors",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQa25raUhzaF9MQkZPcFFlRVVwdmxVTlFGWGZhVmc0ZFh1OWcxY2Q0VlZXLXNQZjNSZVBKRlVrMXozVDlyV09RRy1idUMyVld2N0RnOTMtZmZCbHM0S0Z0Tm9Fa3lxMzFOb1plR1NwekNFTVF1QmU0RF9xSjVWMDBEbFB5WGNFNG00MVBBeG1PdXdkX2pMWWtJ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T2",
+      "operator": null,
+      "summary_cn": "南非顶级移动网络供应商排名，可能涉及运营商设备供应商，但具体内容未知。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.7
+    },
+    {
+      "title": "MTN needs Nigerian investor with R14.5 billion for tower deal",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOb2JTbG1QbmlVUHFGVmFrWC1LbVB2SDQ3bkM0T3J5OVZYV2hfdkFDQWh1ejVSWTVjT0E2eEtPVkFYdzhjekZ0NzI4VFNxYkQtMlIzNHJaV1BESlVoa0JTSTFxV2p4bUtlODB3ek9ZVHJvWER0WFNzOE1tOElmQjFrWUpYSmhNZ0ZVX3M2NDlIOW01dXRFN3pHRnlQZ0U5Y1lLa2pmd0tKUXN0YklPbVBIdHdtUQ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "MTN计划出售其铁塔业务，需寻找尼日利亚投资者，涉及金额145亿兰特，该交易将影响其资本结构和市场战略。",
+      "strategic_advice_cn": "建议MTN评估交易对南非市场的影响，确保资金用于核心网络升级，同时关注监管审批和投资者关系。",
+      "sentiment": "neutral",
+      "confidence": 0.9
+    },
+    {
+      "title": "MTN needs Nigerian investor with R14.5 billion for tower deal",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRzc0d2J3NXpHckVIUlVwNlBENGFaaWZuZmZ4c0haUVFNYndWVWtOZkRJYlZfUDE0ZGVWRl93dHl6XzdVMU55UmY5eC0wXzFwTjlsZDdRY19iaXhid0xOLVBEZllMamhRQnJCQjhLUWc3VXltOVVxcGpCMWt1RjU3S01kT2JFdVh3RnJrcXVlMkttdWJpZlAtVm03YkowRThsUVRsYVZURzBoQ19hYjJJ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "MTN需寻找尼日利亚投资者，涉及145亿兰特的铁塔交易，可能影响其资本结构和市场战略。",
+      "strategic_advice_cn": "建议MTN评估交易对南非市场的影响，确保资金用于核心网络升级，同时关注监管审批和投资者关系。",
+      "sentiment": "neutral",
+      "confidence": 0.9
+    }
+  ]
+}
