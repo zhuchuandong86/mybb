@@ -4,12 +4,14 @@ from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 import json
 import config
+import time
 from datetime import datetime, timedelta
 from urllib.parse import urlparse
 import email.utils
 import trafilatura
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import defaultdict
+from googlenewsdecoder import gnewsdecoder
 
 # =====================================================================
 # 已知会拦爬虫的域名 —— 与其反复请求换来 403/验证页污染正文，不如直接跳过，
@@ -77,8 +79,32 @@ def extract_content_encoded(item):
 # =====================================================================
 # 全文抓取：自己下载 HTML -> 传给 trafilatura 解析（不让它自己发请求）
 # =====================================================================
+def is_google_news_link(url):
+    try:
+        return urlparse(url).hostname == "news.google.com"
+    except Exception:
+        return False
+
+
+def decode_google_news_link(url):
+    """
+    Google News 的 /rss/articles/... 链接不是普通跳转，而是加密过的 token：
+    真实地址需要 ①从 https://news.google.com/articles/{token} 页面里取出签名+时间戳，
+    ②拿这两个参数去调 Google 内部的 batchexecute 接口才能换出真实 URL。
+    这里复用社区维护的 googlenewsdecoder 库实现这套流程，普通 HEAD 请求是解不出来的。
+    失败返回 None（调用方会退回 description，不会再尝试拿 Google 的壳页面当正文）。
+    """
+    try:
+        result = gnewsdecoder(url, interval=1)
+        if result.get("status"):
+            return result["decoded_url"]
+    except Exception:
+        pass
+    return None
+
+
 def resolve_redirect(url, session):
-    """解析重定向，获取真实文章 URL（主要处理 Google News 跳转链接）"""
+    """解析普通跳转（非 Google News 链接走这里，比如某些站点自己的短链）"""
     try:
         resp = session.head(url, allow_redirects=True, timeout=8)
         return resp.url
@@ -117,7 +143,22 @@ def fetch_full_content(article, session, max_chars=1500):
 
     full_content = ""
     try:
-        real_url = resolve_redirect(url, session)
+        # ③ Google News 链接需要专门解密，不能用普通 HEAD 跳转解析
+        if is_google_news_link(url):
+            real_url = decode_google_news_link(url)
+            if not real_url:
+                # 解码失败：原始链接指向的是 Google 的壳页面，硬抓只会拿到无关内容，不如直接放弃
+                article["full_content"] = ""
+                article["content_source"] = "description" if article.get("description") else "none"
+                return article
+            if is_anti_bot_domain(real_url):
+                # 解码后发现真实来源正好是反爬域名（如周报模式下 MyBroadband 走了 Google News fallback）
+                article["full_content"] = ""
+                article["content_source"] = "description" if article.get("description") else "none"
+                return article
+        else:
+            real_url = resolve_redirect(url, session)
+
         resp = session.get(real_url, timeout=10, allow_redirects=True)
         if resp.status_code != 200:
             raise ValueError(f"HTTP {resp.status_code}")
