@@ -1,0 +1,83 @@
+{
+  "date": "2026-08-28",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "JSE-listed ICT firm suspended for not paying its own dividend",
+      "link": "https://techcentral.co.za/jse-listed-ict-firm-suspended-for-not-paying-its-own-dividend/285484/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Labat Africa",
+      "summary_cn": "JSE暂停了Labat Africa的股票交易，因其未能支付首次股息，涉及金额约2270万兰特。公司表示反对但JSE仍执行暂停，以保护股东利益。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.9
+    },
+    {
+      "title": "People trying to block data centres in South Africa are not cute",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPTHduN1VNVWNPMTRLN3o1bkZ0Q3VzX0RvLTNGZlFLSU0zTDk4SHZIcWF1dDhYY0E1MHBGczNBaEt0Zm9ibkljRW5CajBkTjJkLV9mbks3Y2tTUG9TaWxYM3EtME00NHJqU015blJhSkdiUFU1TjBwaFo5eHhMazdINy1FS2h5SDRtbnI3UzZBREt0TXlKUXVKTl85Nm9qVkdXRlN1MWk3S0pJZU5vMGlkQmhJZw?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非数据中心建设受阻，反对者被批评，涉及数字基础设施发展，与电信行业间接相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.8
+    },
+    {
+      "title": "Breakthrough in South African project to build the fastest Internet in the world using quantum technology",
+      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNdnBvQTN1a1B6eXlBYXVQTGZnS2oyWkdrblRzMU5lOGlxVWhKb2JNVTNub0xoQndDUV9ZNHpHS0J2RkVFSXVvMjFWaGY1SWFSLWtPdE10aEk3UUFxUGpjaVhkMGJ4ZWxoRHVMUVgtdFVOUDNnZWN0Y1ZVS0xGWUNYMHBDa0g5bHk2Qmc1eVprQzNFTjBiVFhGeDVaR2pNMnNKQnM1RUQwYnRtQVh2TzFLMDU2SWhWdWNFVjV6eDVnaGxyblplYnh2OUFFLV9HamNJdlA5N3hmaW53NTI1N1FzQlloWUpnZ3B6QWFHRm9QZlJNNmFYcGFxQWNxTQ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非量子技术项目取得突破，旨在构建全球最快互联网，属于前沿网络技术，与电信基础设施相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85
+    },
+    {
+      "title": "New rules for smartphone, console, and backup power system repairs proposed for South Africa",
+      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNT3JvenB6RldzM3otS2dodWlqUzlVbUlZcHZrVmMzWklXczBEcENJMnc4LUxrMU9GekNBUzd2amVtRFRvVXVVQVd2eW03ZURlS21mbGR3VS0tVVUtQTlYaU44Y2txTGdUR1ZDVG1FSXJiX0xyYnM0TDBieFE4dkxHOUFaWU5aQXlKZ3JVNDJkY2FmSWRkcG9ybnFHcURyNU5SQjJ3eVFLdkdKYWpNTFNGQzg3SW5oME82akk0c0dFeGJSNjd2SURQMGlteldCYy1WeVFPNjlB?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非拟出台智能手机、游戏机和备用电源系统维修新规，涉及消费电子维修政策，与电信设备相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.8
+    },
+    {
+      "title": "People trying to block data centres in South Africa are not cute",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPM3M1WUdmX0puUFgxRmpJVGlDakJYQzBMWGJreEVId21razlHSDY3UDFOa2h4R0MwM29DZ3haZXhCcUt2ZXl5M0pEcjBXR1lFMmVlSy1ueG5YZUZWTVFXYk0xZUtDMmFlQlpjUXZhRDRjdHBucXM5QTN6YjR6ajk5Rmk2S1NMaG45Wkdhd0NhMWhwY3J4NXc4Y2ZzRjdSTmJkYlVodEI4cjY1RkhOakNFbk9UeW4xVjUzR3ZCd0R3?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "评论文章批评南非阻止数据中心建设的行为，涉及数据中心基础设施发展，与电信网络基础设施相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85
+    },
+    {
+      "title": "Get your NEW Samsung Galaxy Foldable8 smartphone from Vodacom – with great trade-in options",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOZU5QbVh0cE1TUzhOZlQzUTQ3MFYtbm9Id1luN3RtZG9Xdm5RcHd2T2lOdzRBUThiZzM2RnVjUnJhaEZxYTJFY016X2d3eFB1UzBTbE00QmVtQ0Y0LWFKa2g5aXRDX3BmMlFqQnBMRVVXNUwzX0xFWVhzNjFCQjhxLU5yTjV3d2xrazFfSk40UGxhQnZtbWg5cW15aWd5ZkN0eDNWOFNaVV91eTY2WnJhUU9jVHdVdDlCUXVIRC1MT0czT0NtN3lyWDRTSDllaXNfWmtBYUtYTEVQaXBrNUE?oc=5",
+      "source": "MyBroadband",
+      "tier": "T2",
+      "operator": "Vodacom",
+      "summary_cn": "Vodacom推出三星Galaxy Foldable8手机促销，提供以旧换新选项，属运营商终端销售动态。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9
+    },
+    {
+      "title": "Breakthrough in South African project to build the fastest Internet in the world using quantum technology",
+      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQXzBvWllIYm1BUVBTNjVfdXR2WUs4NzJNWWU1VFljemRVMEZqclJsdW1NZW5lOXNyRHhoeFk3RGtGR0VaNk1sWkl3QTQ5SFh1ZkxveTJjVF9NVG5ycllYUDlHUVhIN0tDSVZoLWp1aGx1c3NmcXg4YU5rNzRKMHlyOExJR1BzN1JGd0Q5d2hGVW1ZblpGcS1WSUZSZ1BGNXUtTHVGYloyRTY3b2l0VWFWVkFaWDB5OF93V3FEcWE4N0tTM0d0emwzS2VnTXE3YjNpT3RUV0Y1dE5nRl9MYjVkRWF0Z1hOaDl0TjhVWA?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非量子技术项目取得突破，旨在构建全球最快互联网，属前沿网络技术研发。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.8
+    }
+  ]
+}
