@@ -1,0 +1,17 @@
+{
+  "date": "2026-08-29",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "People trying to block data centres in South Africa are not cute",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPM3M1WUdmX0puUFgxRmpJVGlDakJYQzBMWGJreEVId21razlHSDY3UDFOa2h4R0MwM29DZ3haZXhCcUt2ZXl5M0pEcjBXR1lFMmVlSy1ueG5YZUZWTVFXYk0xZUtDMmFlQlpjUXZhRDRjdHBucXM5QTN6YjR6ajk5Rmk2S1NMaG45Wkdhd0NhMWhwY3J4NXc4Y2ZzRjdSTmJkYlVodEI4cjY1RkhOakNFbk9UeW4xVjUzR3ZCd0R3?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非有人试图阻止数据中心建设，文章评论此行为。涉及数据中心基础设施，与电信相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.8
+    }
+  ]
+}
