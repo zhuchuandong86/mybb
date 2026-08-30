@@ -1,0 +1,78 @@
+{
+  "date": "2026-08-30",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "The ace up Cell C’s sleeve",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQWEpXWlA1azZQRkdoZzQ0SFVGNURSWk8tbGdDdHpFbWFtVjhveEQ1dTNlOEdJUHZ6RGtMWlJ3d1IzS0JyWE52RFpYTGtKT1FOZ1JrSzd3VEFFSWtTc0xiRGpDUi1WNTV2aVZLSEJWMlNmdGxValM1ZzlqN2o4OHRhYVBxWExkQlNJcDdF?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Cell C",
+      "summary_cn": "Cell C的制胜法宝，可能涉及战略举措，但具体内容未知，需进一步信息。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Starlink set to become biggest fixed Internet provider in South Africa’s northern neighbour",
+      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxObGlkN1ptNmFWZ1U1UXRYT3BPclo0T2R2VU0xYUx0Tm9zNE9mZ2w1WUZwaVhxZGxBUEtGdGl2azhHbzc3NkVtamhLNzRWUkVSLTVKZGRBeDJ4ZkFzczJrZ2plUlJtczAzbmpoNTh5S0p1WmhUMXZUR3NaTUUzSFhQM2U0QU1JZnRxQ0VKLTFnQTN3ellyU0NURE5XbTMzcmZDRmE3dzFJaTAtSjVIZGtnQjhueVR5bDFyVDJwOVNLZHdyTGh0bVBMM29SLWVacV9FaDBwYzJKNk0yZk1wYkNJYjFB?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Starlink",
+      "summary_cn": "Starlink有望成为南非北部邻国最大的固定互联网提供商，反映其区域扩张。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": false
+    },
+    {
+      "title": "South African company that powers top SOS apps no longer involved in Gauteng e-Panic button project",
+      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNZy1oc255YkFpLWZfbWRGVVh6bkRnRVczU2xFcUE0Mm5VMDJXdjZvV1BmYlFRYlNfWTJpaGlNUlNsUW4xQjNkQ1NZendUYzdXLU51Y0JXanFIamttVTNLRjRPZ0RvNVQ5Z0tMamFZRXNvWmRUTE42Q1ZNN3FZdVB5UmJxNmRCQmU5Vm5GSjRIYS03VEdzNjVta25XYzBuQW1hVzRtTlRVbmtlbmpPNUZHUUI2eWZRci1aMnM0SWpIdVdtd2l1Xzd5UmxIdUkyQUo4TnNLQ3RaaUhzeVVvQ2VRYVlR?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "为顶级SOS应用提供支持的南非公司不再参与豪登省e-Panic按钮项目，可能影响应急通信服务。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "South African company that powers top SOS apps no longer involved in Gauteng e-Panic button project",
+      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPbEV6NnpIanh3dEJzVjhWcV90WnAzRTk0Vm9kSzMzSFlFLUN1LTVUcWt4QzJsWS12anhyUVRXRTlVMmpnbW5Pd0lCaDNJMjJFTGhPeVdoUWpzY0cxdUpnUHBHLVNKN3lXc21TRkNJQ0FkYzNHcVcwSkl1UlhaUnpCdnJGQWN5VjVZMnNzbi1tZVhUcF9FYUt5ZkJBc042YlA5WGNnX1JNRjNxRExuU0ZVMWFoQkI5dXNTTHFmSXdueHMyT2JFOFQ5bDM1ZC1KMEJYZVRoS05ZODRCbFVPZkdWYWpzT04?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "为顶级SOS应用提供支持的南非公司不再参与豪登省e-Panic按钮项目，可能影响应急通信服务。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Starlink set to become biggest fixed Internet provider in South Africa’s northern neighbour",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNRGg0b1VBMkg1a3BXLVpXMk5JcDVVTktOcVpBVFU0dVNtanRyLWlfa0Jjc1ROcHZPeGx2dHBYLUtEcElwWFctczlubUlYWk9XZFRpZ1liUEVHWDRoNGhIX1BvcHZxZUVDUEl1VUI2TTAybk1qbTQzUWFVaHZjM2NyZGVWeFg2eXk3d2NSMzRTUFdFLUdxRDBVWGRpbTV3UXE1dEl2OXA2S2k3bWE1X05CNkQ4VnJPWlhPSHY0QUdyRm5YUnBzSzlFYzd3ZU9BVWdKeC1McFl4d1p4Y3c?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Starlink",
+      "summary_cn": "Starlink有望成为南非北部邻国最大的固定互联网提供商，显示其在非洲市场的扩张势头。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": false
+    },
+    {
+      "title": "MTN’s pricey Syria exit clears path for further African expansion",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObDdEOGUxWXd4eHdtV0w1SWlNalROMmh3WVRtSGV3TklFa0FaNVhQQWVVY04zamJvVUgwQ3ltVndXS1FZNGFoWmxlS1VDaWpJOHlGYlRGNGlFWmJpd3VKUENGd0JtOFFmTEVVYWZTekFOWDZ6eVB5NHNRSFk1ZWZ2TE1xRi15VHpSYTgzZHI5eGdkWTZOUFd3QVdFTXRZWU9rMEE?oc=5",
+      "source": "MTN Group News",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "MTN以高价退出叙利亚市场，为在非洲进一步扩张铺平道路，体现其战略聚焦非洲核心市场。",
+      "strategic_advice_cn": "建议MTN利用退出叙利亚所得资金，加强南非及非洲其他关键市场的网络投资，并评估潜在收购机会以巩固市场地位。",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": false
+    }
+  ]
+}
