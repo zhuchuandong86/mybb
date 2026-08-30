@@ -125,9 +125,13 @@ def extract_structured(client, articles, batch_size=25):
 
     # 把结构化判断与原始文章字段（title/link/source）合并
     merged = []
+    excluded_by_model = 0     # include=false（模型判断不相关，或素材太薄不足以下判断）
     for item in all_items:
         idx = item.get("id")
-        if idx is None or not (0 <= idx < len(articles)) or not item.get("include"):
+        if idx is None or not (0 <= idx < len(articles)):
+            continue
+        if not item.get("include"):
+            excluded_by_model += 1
             continue
         src = articles[idx]
         merged.append({
@@ -140,10 +144,24 @@ def extract_structured(client, articles, batch_size=25):
             "strategic_advice_cn": item.get("strategic_advice_cn", ""),
             "sentiment": item.get("sentiment", "neutral"),
             "confidence": item.get("confidence", 0.5),
+            "_had_full_content": bool(articles[idx].get("full_content")),
         })
 
     # 按置信度过滤明显不靠谱的判断，而不是全盘相信模型
+    before_conf_filter = len(merged)
     merged = [m for m in merged if m["confidence"] >= 0.4]
+    excluded_by_confidence = before_conf_filter - len(merged)
+
+    # 新增诊断：把"到底是抓取质量差，还是模型判断保守"这两件事分开看
+    thin_source_count = sum(1 for a in articles if not a.get("full_content"))
+    print(f"  → 模型层面过滤: include=false 排除 {excluded_by_model} 条, "
+          f"低置信度(<0.4)排除 {excluded_by_confidence} 条")
+    print(f"  → 素材质量: 送入分析的 {len(articles)} 条里，"
+          f"有 {thin_source_count} 条只有摘要没有全文（full_content 为空）")
+    if thin_source_count > len(articles) * 0.5:
+        print(f"  ⚠️ 超过一半的素材只有摘要，模型保守判断是预期行为——"
+              f"根源在抓取阶段，建议先看 1_scrape.py 的按来源统计表")
+
     return merged
 
 
