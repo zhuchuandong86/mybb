@@ -24,6 +24,9 @@ ANTI_BOT_DOMAINS = {
 
 MIN_CONTENT_CHARS = 200  # 低于这个长度不算"抓到全文"，只是噪音（如 Cookie 提示、验证页残留文字）
 
+# 新增：统计 Google News 解码失败的具体原因，避免异常被静默吞掉、事后完全不知道卡在哪
+DECODE_FAIL_STATS = {"rate_limited": 0, "other": 0, "_last_error": ""}
+
 
 # =====================================================================
 # Session 工厂：连接池开大，避免 "Connection pool is full" 告警
@@ -93,11 +96,26 @@ def decode_google_news_link(url):
     ②拿这两个参数去调 Google 内部的 batchexecute 接口才能换出真实 URL。
     这里复用社区维护的 googlenewsdecoder 库实现这套流程，普通 HEAD 请求是解不出来的。
     失败返回 None（调用方会退回 description，不会再尝试拿 Google 的壳页面当正文）。
+
+    新增：记录失败原因（限流 / 其他），之前是完全静默吞掉异常，看不出问题出在哪。
     """
     try:
         result = gnewsdecoder(url, interval=1)
         if result.get("status"):
             return result["decoded_url"]
+        msg = str(result.get("message", ""))
+        if "429" in msg:
+            DECODE_FAIL_STATS["rate_limited"] += 1
+        else:
+            DECODE_FAIL_STATS["other"] += 1
+            DECODE_FAIL_STATS["_last_error"] = msg[:200]
+    except Exception as e:
+        msg = str(e)
+        if "429" in msg:
+            DECODE_FAIL_STATS["rate_limited"] += 1
+        else:
+            DECODE_FAIL_STATS["other"] += 1
+            DECODE_FAIL_STATS["_last_error"] = msg[:200]
     except Exception:
         pass
     return None
@@ -247,6 +265,14 @@ def print_source_stats(articles):
     full_text_ok = sum(1 for a in articles if a.get("content_source") in ("feed", "scrape"))
     print(f"\n  全文获取成功率: {full_text_ok}/{total} ({full_text_ok/max(total,1)*100:.0f}%) "
           f"[不含仅有摘要的条目]")
+
+    # 新增：Google News 解码失败原因汇总——之前完全静默，看不出是被限流还是别的问题
+    if DECODE_FAIL_STATS["rate_limited"] or DECODE_FAIL_STATS["other"]:
+        print(f"\n⚠️ Google News 解码失败统计: "
+              f"限流(429)={DECODE_FAIL_STATS['rate_limited']}, "
+              f"其他错误={DECODE_FAIL_STATS['other']}")
+        if DECODE_FAIL_STATS["_last_error"]:
+            print(f"   最近一次非限流错误示例: {DECODE_FAIL_STATS['_last_error']}")
 
 
 # =====================================================================
