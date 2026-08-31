@@ -1,0 +1,138 @@
+{
+  "date": "2026-08-31",
+  "mode": "WEEKLY",
+  "items": [
+    {
+      "title": "The hole in the law above the Karoo",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE4yQnNxeEdlejJHNGw3WW1EQ2xob0RneUhjNGQxX2JfcXZpVkliWnYwa3JCelhkN3YzZXJBWEQyY3NrdjhEY2lJZjU0TVBSaTF2OEZ6cHZmalhrNHhNR2hwY1ZpVWVIMjNzNjlvNExldHJFemlvbGk2Yg?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非射电天文台要求ICASA修改法规，以协调卫星星座与射电望远镜的频谱使用，防止干扰。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "Nvidia’s top AI chips are coming to a Centurion data centre",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWXVaTWZTRmd1N1ZUWVpQN0RvRHd4U0s2YTN6MWFtaFZ0eDBGY2txalNuaVR4dFBmS2lGZjR6YzFXQ3NaOVBITi1DZWxyeU5wZHBEV0V6S19HWVI2c3dOZHNxOGxWdmtNeXVxTno3UVBKS24zMjZGTDBYYmxFLU1GMGFFSzdOdV94YnBCY0c1cnlvMktKUm1n?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Stratos Lab",
+      "summary_cn": "南非初创Stratos Lab在Centurion数据中心部署英伟达B300 GPU，打造非洲最强AI云，预计三个月内上线。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "300 million Sims a year for 65 million South Africans",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMEh3eUhNT3Zkay1DOWZrdU1OVWk5cXp5MXZBcTVKZlhnTGhjclNHQmxyQUlCdzN2ZWZNVGlzNi1zZ2FCWnBzbHBTRllrQVFMOVE5OVBwbkQ5ekhselZXdnI4dnJBcVdrVEFWQTRUSGR1Mk5OenFCNUNIbXVaZ0FjYS1iVThIZXZkdXR5THJlaUc?oc=5",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "MTN南非CEO透露每年向市场投放9000万张预付费SIM卡，行业总量达2-3亿张，反映多SIM卡现象严重，影响收入可持续性。",
+      "strategic_advice_cn": "建议MTN等运营商加强用户忠诚度计划，减少SIM卡浪费，并推动监管机构规范SIM卡销售，以提升ARPU和网络效率。",
+      "sentiment": "negative",
+      "confidence": 0.95,
+      "_had_full_content": true
+    },
+    {
+      "title": "MTN targets 150MW in first phase of AI data centre push",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPMDJTRHZyQVM3WnhMUGVqWS1TREFJTDZRdTNKUzNkUjcyMmJfdFBhd2gzb0Nzb0xselc0VklqRHpOcnA4a2hBcl9DNXpFV0VmbXRNRWlvU0VDRFJ3MnJqRzFma1lFZ1M3R1VSdGgxNXEzQ1ZqRUNaeERlZnFZX1RJUGpQVDVvUFplcWN4WXZVU1NIOUk?oc=5",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "MTN集团宣布与阿联酋支持的数据中心平台合作，首期在南非和尼日利亚部署150MW AI数据中心容量，MTN仅持少数股权。",
+      "strategic_advice_cn": "MTN应明确合作细节，评估对资本开支和债务的影响，同时关注数据中心对网络流量的拉动，并确保与现有基础设施协同。",
+      "sentiment": "positive",
+      "confidence": 0.95,
+      "_had_full_content": true
+    },
+    {
+      "title": "What African and EU firms must know about data residency",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNbWh1blF5X2wxOGswd1lSNzhhbTVOQmxnZURBMkd5YTBvWng1ODd1LVFkR0JRV1RoMl9xWVhoZlBocnR4eGpQZUdwdThXejdGTlFKU3R3a1lsUjktUGh4RmdfazRDc255a0thV21yZ2R4eW02WW9jMTJLSWVSbkgzeTdlZnpSR2dKNnljajh0d0k0SUxD?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "文章讨论数据驻留和主权对云架构的影响，涉及南非Popia和欧盟GDPR等法规，指出数据主权已成为架构决策。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "Huawei is ramping up spending on R&D",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1WQWl0YzV2LXdrQTRPQmJsWkJuRW1LbEtMMmFvRl80RGlVZ1dPdFVwWEJYcWF4RWxDc0Zpb1lISXlSQ21Mc1I2cGF0MFQxdS04Z1daSEdOMldkZHBnUkt5UFMzVTZPWXp5ODFEZFZfbWJ4N2VC?oc=5",
+      "source": "TechCentral",
+      "tier": "T2",
+      "operator": "Huawei",
+      "summary_cn": "华为上半年净利润下降36%，研发支出增加，继续投资AI和芯片，可能影响南非电信设备供应。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "Agentic AI is turning WhatsApp into a sales channel",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPLUFReGhtUzd6MlVucmh1MzNYWVVwanF5ajg2b1pNcUoyOVJ6MERDNFI1S0RkQVNWdmRWQUo4d2h5SlNubE5wb1l4a2k2WkN1YXN5VjFJckJoUzFOX053Uk1VWU1ESGFsN1pzT3RVa2FxTEtGUS1ibU1ZRk5wSGE5TVMtWDZqdmM2YlJfYk9n?oc=5",
+      "source": "TechCentral",
+      "tier": "T2",
+      "operator": null,
+      "summary_cn": "文章讨论代理AI在WhatsApp商业渠道的应用，南非企业采用加速，可能影响电信运营商的数字服务。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.7,
+      "_had_full_content": true
+    },
+    {
+      "title": "Blu Label says MTN is coming for its Capitec business",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOTVJOUk1oVnV4SjhrWEJ0RGpxZkYtci1mZHhOeXBHUmg0NExTbS1KNHFSYUhRekpHekdFRU1xeVhHeVVHWF9MV2xCVnlnQmdYZTQtQ3E1RWJwX0NuRmZOTDRjTVlYcDRRVWozYkFJWFhnVHVuQXhEcHJSUDVXQ2J1ajMwMEZTdVY2YmZDcVZhV2w?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "MTN",
+      "summary_cn": "MTN计划直接与银行合作销售话费，影响第三方分销商Blu Label，涉及Capitec业务。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "A major industry is turning its back on Eskom",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPSFd0a3dMR1NONkZoWTFnVjlBOFhTVDU0LXVELXhtSWI1ajNrck9GajBEM202Umd3TXNfRnVuaC1IUjJORkh6S25oU3RkQUZWRnBMXzMtWTlNZnpld2NXMldWd3JJQ0gycFIyTlpOV09EUFpGV3VEdmdSNGJDbDQzSHF0LVdfUQ?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非矿业公司加速投资可再生能源，减少对Eskom依赖，可能影响电信行业电力供应。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "R500-million replacement for South Africa’s top supercomputer gathering dust",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQTGc5c0Vyd1BQd3NjT2ZCOW52emdGb1liTWl3Z3RLQXFjam9HWTF2M3I4cXEyRktTX1R6U1U3N0RJOFlLZ1drc0pVVGt0OXBzMVFrWExFOGpHUjhCRmtSTlg4MWVXVkltTk5TUDE1a0Q4RWgzTkwyTUdjaEJZODY1RnJFSWtidFhKYjB0bE90NWtoY0l3UWNTanUyLTE3bnZBOFd5elYzYmNxb0xtdTkwY3VIR3MtUFl2ZzZIYllEcmJKYVRzQUlhNA?oc=5",
+      "source": "MyBroadband",
+      "tier": "T2",
+      "operator": null,
+      "summary_cn": "南非顶级超级计算机更换计划搁置，涉及科技基础设施，与电信间接相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Openserve Fibre Order",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOTFNTQWRjVldrdHZBQUZEeV9mUWw5NG1oV1U2YkhZSWFCZHFYbm9td3VLMjE3Smp1YWt3SUFYSmNFOUdmX1R2YmJMRFlhaXJtdVJpR012NHR2SENnMC1jRHdVWUdiUzNldW90b2hNLS1UM0JmQ0wwU2Z0b2JXRklQUkhkUTU0OHZzd3dj?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Openserve",
+      "summary_cn": "Openserve光纤订单相关新闻，涉及网络基础设施，但具体内容未明确。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "_had_full_content": false
+    }
+  ]
+}
