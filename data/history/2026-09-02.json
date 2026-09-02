@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-02",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Teraco’s electricity consumption triples in four years",
+      "link": "https://techcentral.co.za/teraco-energy-consumption-sediba-solar/285665/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Teraco",
+      "summary_cn": "Teraco数据中心电力消耗四年增三倍，可再生能源占比下降，依赖单一太阳能电站，反映数据中心扩张与清洁能源供应不匹配。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Paratus Uganda first to market with Starlink service",
+      "link": "https://techcentral.co.za/paratus-uganda-first-to-market-with-starlink-service/285660/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Paratus",
+      "summary_cn": "Paratus乌干达推出Starlink服务，成为该国首家，面向企业客户提供卫星连接，拓展偏远地区市场。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "If it quacks like a duck: Kganyago on regulating fintechs",
+      "link": "https://techcentral.co.za/national-payment-system-bill-sarb-fintech/285597/",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "MTN",
+      "summary_cn": "南非储备银行拟将金融科技纳入银行监管，推出国家支付系统法案，MTN金融科技峰会透露监管改革方向。",
+      "strategic_advice_cn": "关注法案细节，评估对MTN金融科技业务的影响，提前调整合规策略，利用活动型监管优势拓展移动支付市场。",
+      "sentiment": "neutral",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "Shoprite closes its bet on the spaza till",
+      "link": "https://techcentral.co.za/shoprite-closes-its-bet-on-the-spaza-till/285567/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Shoprite",
+      "summary_cn": "Shoprite完成收购R&A Cellular 51%股份，该公司为南非spaza商店提供POS设备，Shoprite计划扩展其平台。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Wiocc lands $300-million from Saudi and African backers",
+      "link": "https://techcentral.co.za/wiocc-300-million-afc-vision-invest/285628/",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "Wiocc",
+      "summary_cn": "Wiocc集团获非洲金融公司和沙特投资3亿美元，用于数据中心、光纤和海底电缆扩展，系其最大融资。",
+      "strategic_advice_cn": "关注Wiocc基础设施扩张对南非批发市场的竞争影响，评估与现有运营商的合作或竞争机会。",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "South Africa’s biggest mobile operators ask for exemption from competition laws",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOMEtMdU9PbkpyZUZmd0Jobl9ycWFiUzQzZkI5QVlKTGxoeVlPWkx6ZFA4VWFfNUpaSkhmVnBVb0NHY3ZvVWo5Y05YYk9zaTVlUTJ5Qjh2cWk4QzRWSXBYaXpRQW1nX2w2d0dib2xVeWJYcVZlOWIwdXBLRDFMUDJDZmh5M0xTSTNUOUw5V1BreXozVTVFUUFGenJ2SkViMjBTMjNzX0RNREx3S3d2ajl6RDRBZjY3RXV3YTFmRjlmQ2pQZmpVeUdNWE9B?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "Vodacom, MTN, Telkom, Cell C",
+      "summary_cn": "南非主要移动运营商请求豁免竞争法，可能涉及联合谈判或合作，影响市场竞争格局。",
+      "strategic_advice_cn": "关注豁免理由及监管反应，评估对竞争格局的影响，准备应对策略。",
+      "sentiment": "neutral",
+      "confidence": 0.8,
+      "_had_full_content": false
+    }
+  ]
+}
