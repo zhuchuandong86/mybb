@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-03",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Rural South Africans should not have to trade competition for coverage",
+      "link": "https://techcentral.co.za/rural-competition-exemption-act-operators/285726/",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "ACT成员运营商",
+      "summary_cn": "ACT代表南非主要电信运营商申请五年期竞争法豁免，以协调农村基础设施部署，避免重复建设。此举引发争议，被认为可能损害竞争和消费者利益。",
+      "strategic_advice_cn": "关注ICASA及竞争委员会对豁免申请的审查进展，评估对农村市场份额和竞争格局的潜在影响。建议运营商在合规前提下探索共享模式，同时确保消费者利益不受损。",
+      "sentiment": "neutral",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "What’s Next — MTN South Africa’s Ernst Fonternel discusses Pi by MTN",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZDNEUEd4QVliMGxPUGdjOFU4MHhDUk9kcnpvTl9KR1BGRFpTSmRrVGZYdTlsc3UzQXlUWWJNSGxKMkZfTDkxZ2hsenVrMy1BLTVIMlB5SjZKSXd4d3RwYWtDaUwtSXljN1dxLTM5b0FibmI2cDIwU0lleXI5aHAzQzdrNFNhR0ZiVlhUNDFqd2xsb0VoYW0wTnJ0YW4xZVR1dENkU2FqMHFJZzJvWWJQRTJUYXpZMXM?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "MTN",
+      "summary_cn": "MTN南非高管讨论Pi by MTN，可能涉及新服务或产品，但具体内容不明确。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.7,
+      "_had_full_content": false
+    }
+  ]
+}
