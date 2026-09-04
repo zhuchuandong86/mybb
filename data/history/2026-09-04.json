@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-04",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Icasa to investigate what South Africans pay to communicate",
+      "link": "https://techcentral.co.za/icasa-telecoms-affordability-market-inquiry/285773/",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": null,
+      "summary_cn": "南非通信监管机构Icasa宣布将对电信服务可负担性进行市场调查，重点关注低收入家庭、农村社区等群体的语音和宽带服务价格，调查将持续至明年。",
+      "strategic_advice_cn": "运营商应准备应对可能的资费监管，主动优化低成本套餐，并加强与监管机构沟通，以影响调查结果。",
+      "sentiment": "neutral",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "Rural South Africa does not need six towers to have a choice",
+      "link": "https://techcentral.co.za/rural-infrastructure-sharing-act-competition-exemption/285755/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "ACT",
+      "summary_cn": "评论文章讨论南非竞争委员会是否应批准ACT代表成员申请的农村网络部署五年豁免，涉及基础设施共享与竞争问题。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "Telkom message about saying goodbye to SIM cards",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSkdoTkc2SlBIdFA3Y1lqbF9lbDR4VE1tUVlDbTVCcFN6U0xVT1docHgtUU41MGtlOWFQZVo0VzlKakdDSFpsV0FpR1QxN1ZpUTdUUFNmaEFKa0MwUWFfX3VyeDV1NUZ0LVBMWGJOQUtieXYteXNKUHdlMXN5Z002dXQzY2VrMXNBdnE0QUJoNDB1NkFpdlB4NG5XYlFiMEc2OHc?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Telkom",
+      "summary_cn": "Telkom发布关于告别SIM卡的消息，可能涉及eSIM或新技术，但正文摘要不完整，需进一步确认。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "_had_full_content": false
+    },
+    {
+      "title": "Investigation targets high mobile and broadband prices in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPMXdmMmliRndadHEtempiZ0lXaTZwTHBBLTJoOVpwSzhvenJaMFNoUnVjaHJIc2VGWTFxeUlkdWRrUkQ1VlBtN3pXdFdOX2ZBdndrcG1RVVdyRlU5NUZhckNTQlZfTWVoUW1WOV94blNDVkxqZlUxdXdRVmU0Ul8zVmZxcnVhdEIzeVR1dzFmaUt2bXlZam9jQTZodWdDM21ucTBWdjUyMFZiTVNHYUh4UU1IekNNRk1zbktpZlhyNXY?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": null,
+      "summary_cn": "调查针对南非高移动和宽带价格，与第0条类似，但摘要不完整，可能为同一事件。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Investigation targets high mobile and broadband prices in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPR3NQRG5vVW10WEtCVVlNRGE3bWhWTEFCODBrUk5hTWx6aFJVQmVucGZhamdWcFJvRktpbTRXR0tWMVpWY2MwNGc4UWtlZ2ZfNHZYa0FSMjVncWpJTWlsTXYtODctR1JVYVhGR1N0X01sdFBLaG9nWm9GMUc4THNYQmpKZDBqWTJfVFZ6NWZDSF9WS1ZfN1dTQ3RmZDlIUXBhbnYtUFdXdTFHOVBnTC1kZ1ZURXIxa1NfSDQ4?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": null,
+      "summary_cn": "与第16条相同，调查高移动和宽带价格，可能重复。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Telkom message about saying goodbye to SIM cards",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOazBBcURWZF82VUhyR0luQ2M5RzdJUEtOYjBmQmxtdEVKell5T1N0R0wyNGhoakxabWlyUTQyS3JZNG9QR09tUmthb25Sb2NyV0o2SXRDS0tkb0dqUDhLUzBEY0lYQkQxdHBKQnpLVE9pekdMU25Hc3F4YlhkTFpmQmlrU2tVaS1KVEt1NDI2ZkUzTFE5cmd2TVAxOVhOWXNHMWhvWkFWZnVTa3pKSW5N?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Telkom",
+      "summary_cn": "与第10条重复，Telkom关于告别SIM卡的消息。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "_had_full_content": false
+    },
+    {
+      "title": "Fastest uncapped Internet for people without fibre in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPSVRKdGlQM2h4cXlnWDFkZ3g1eVJRVENJMEdsVjdDZWJ0cU5HTG9kOEY0dmhodklqeVVDMFNTM09TVjlITXhCaTAxVU5SNmFvcTBLeHo0ZVIzVkNsZlpwMmVRckh2Q2NKQk1YQXFSMDJDQnpaY0RJZTFGSlpFTU44WVNOYUdSOW81b3c5QWI4Zkw1dGNiblB4NldiTjBpV0tZWDR3cXZWcDJzRGJtRFI5ZW9JSFFwMFlnUkE?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "介绍南非无光纤用户可用的最快不限量互联网选项，涉及FWA等无线宽带服务，与电信市场竞争相关。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": false
+    },
+    {
+      "title": "Fastest uncapped Internet for people without fibre in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNOXhLZ3RIbDY3Qzc3Tll3LTVwWjNGRURheUtMTDdSZ2I4UlE1bVVpblhUN3VzUERBU3JBTEtiSmRRUEplREVzcDFGNFBiTWxadUV2UjdNM3VWNUhoTHFuRmMtQTNnS0lqUFUxeE81dTNGcGUzY1NxZks5X1lwUlVDWk9YUE9GMGpuVUdraUx1T1NkVW94UFdLRkhUMWdjT3UyNDFSZV9rNVdTUUpmRTZFY0I0VnZCQQ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "与43条重复，介绍无光纤用户的不限量互联网选项，涉及FWA等无线宽带服务。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": false
+    }
+  ]
+}
