@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-05",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Rural South Africa does not need six towers to have a choice",
+      "link": "https://techcentral.co.za/rural-infrastructure-sharing-act-competition-exemption/285755/",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "TechCentral评论员Paul Colmer反对竞争委员会批准ACT代表成员申请的农村网络部署五年豁免，认为共享已建基础设施可减少浪费，但不应协调未来计划。文章回应了豁免申请的理由。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "South Africans feel like they are paying for fibre speeds they don’t need",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTzRLc0o0NTZKUHFTMHBaWTZOa1JYXzBlMjRFNkx0Ykk4UGtUQWpJNkI5SVNmR1RFckNvUzF2cFBVYWwwNnVidC1zb2FCM05ydTNFbzNCSHpiVEs4Z25Seml6djhSMHR0NjNVOGxwSTJhSHh2OHhMczZfalVXTjR2ZTJSWUVYU1BMaHBsV3JoNlI2Nlk1bjJpM2ZpX1lzTmRJY2FtWFMxX0FMb2tmeFhMT2pyal9sY1p4VXpSVV9R?oc=5",
+      "source": "MyBroadband",
+      "tier": "T2",
+      "operator": null,
+      "summary_cn": "南非用户感觉为不需要的光纤速度付费，反映消费者对光纤资费的不满，可能影响运营商定价策略。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.8,
+      "_had_full_content": false
+    },
+    {
+      "title": "Rain 5G Home Internet speed test hits 620Mbps",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPMnI5X05wVzVCTW1oT3g0Ti1NOVVRdUpqUVhpNWFhVjRidEtKbnFEYV82WGlYd1QwM0ZRRzJLcXlHbnA4UmZ1YVAwazEtRk9CY21vc3RJSkU2YnBHdW84Z3VfdFZFWnV3cHh5cHBWWFJHbXF4M1hvVHoxZ3JoYkVLUVBmcHhwV2RBdklHbTFwNjN6cVZWZGc?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Rain",
+      "summary_cn": "Rain 5G家庭互联网速度测试达到620Mbps，展示其5G网络性能，可能吸引用户。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": false
+    },
+    {
+      "title": "Bad news for people who pay for Internet in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPYThQU0lfZ2dqalQyblk1S2RFaDdrSVdHc0lWYWpBcksxYVREUk9Hak90VWJtRFFHOWZ6djQ1OWtCemd3Zlpoc2xiQzZYb2pyMTZSWVVfaEw5NUVtZ1RNOXp1ZHVmX3lzQ0U3ZkNLbXBLcE4yVzJFNzVYUkswLXVaV0N4d3hwOTNCWFh2cC1YV1dIcnZzWXJEajhfZkR0MGU5TzAxMGdGUXNqVXZyTVE?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "标题暗示南非互联网用户面临坏消息，可能涉及价格上涨或服务变化，但正文未提供具体细节。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.6,
+      "_had_full_content": false
+    },
+    {
+      "title": "Rain 5G Home Internet speed test hits 620Mbps",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQZjdSSDJ3REZGRERLSjh5bzZ4WjdJQU5nMEJLTENtNTlNQkVPdzJRVGdzZnBpVkV1b25HUUwwUUJjMno4ejdoVjV5ZnNCUUFHNVd6cHhzcldPU1Nfc2daNEF4Umlzay1mZm5nWVB5NEQ0UnFFRllNSGxja2p4RmhRV2EwYmxmRnNGcUt2STZab0t2cmJ5VEVnNXp3?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Rain",
+      "summary_cn": "Rain 5G家庭互联网速度测试达到620Mbps，展示其网络性能提升。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": false
+    },
+    {
+      "title": "Bad news for people who pay for Internet in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOaFhjMHVRQjNLZm1UN0VJM0VZdkRZVldBSVo3dklVQXk2aWIyNDhDNHg5RDRVNHdlNjQwaUFZZkxyazI2VUpUTjkwYks1dk5yOGxYNnZybEJhNWVOVnFJX1Y3UU01clZPVHBjbmZ6czh6WF9fMWVpdTR6eWJqSDItWTh0ZVRzZm56R1Z3aFNwWGNXZm5XUnlhbU10NW5WMGNrUENJNmF1V1o?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非互联网用户面临价格上涨等不利消息，可能涉及运营商资费调整或数据成本增加。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.7,
+      "_had_full_content": false
+    }
+  ]
+}
