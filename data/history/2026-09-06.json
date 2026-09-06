@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-06",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Vodacom and MTN 5G hit a milestone in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPeXZCNGJhbFpTcnYzVDRTbUxDWEtnTGt5WlpvNXU2U0oxbzExS2dDSGIwaGU3c2tVVkRLS0d6MTVKNHdnZE43NUR0TjNsbktNTmFxU0JNZjhXc19qam9Ca3VQSkhlV2dvX1J1T2t2bUNHZk9aS2FaYkdkdVk1V3JSVEl4eHZZUDFud09LamRIZEp0ZW9TMm1mVnJsYnI?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "Vodacom, MTN",
+      "summary_cn": "Vodacom和MTN的5G网络在南非达到一个里程碑，可能指用户数或覆盖突破，具体细节未明。",
+      "strategic_advice_cn": "关注5G里程碑的具体数据，评估对市场份额的影响，考虑加速5G投资以巩固领先地位。",
+      "sentiment": "positive",
+      "confidence": 0.8,
+      "_had_full_content": false
+    },
+    {
+      "title": "Vodacom and MTN 5G hit a milestone in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNUE52MmJ5MkJ5d0ZYbXBTdXdaNVJ6eVB6akNBOElYN0Z1Q0xFVGs2TEEzemxFZk8yVjBSZFlWVnNmNDhTcEtzalZpcmxraDlHdzM5TzNGS1R4V3FUQ21rRGFnVnNScTZTbTYyWHZnWVRjUk1VWVd5UG5vdGdZLXN1NlRXaDZ4SnQ2OGdzXzY5NHdNdURvdjZ3ZjlRbzJGNDNTQ0JuLUd6VkZXUUpwT2llNUVR?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "Vodacom, MTN",
+      "summary_cn": "重复新闻：Vodacom和MTN 5G在南非达到里程碑，可能指覆盖或用户数。",
+      "strategic_advice_cn": "与第1条重复，建议关注具体数据，评估5G竞争态势。",
+      "sentiment": "positive",
+      "confidence": 0.8,
+      "_had_full_content": false
+    },
+    {
+      "title": "South Africans feel like they are paying for fibre speeds they don’t need",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQUmNUa1RUTDFRN3pfWjZzZVBlR1Fsak5VN0M5S3VQNkVHY0RMMjZ3Vmk1MFVYcWV3d2wxVE9TelA5OU1BYzZaNDNXbXExbEVEblVjZzUtVGYtWUJwVmJNN183SjNwWjB6SVZmdEJra1JsWmFUR2puOE1vTU5OLXZzTGd0YkxSWlhqbHZZbERfQnJSM1NEX2hCSUZfUU5HWDFFSDFLa290RldBanlLZ2tVT1RxUVFEM1U2MkhFSmgxNENacXhRVzlDbWJJclQ2M0J0S1hDcHRGcFktdDQ?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非用户感觉为不需要的光纤速度付费，反映光纤服务需求与定价问题。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.85,
+      "_had_full_content": false
+    }
+  ]
+}
