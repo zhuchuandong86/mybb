@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-07",
+  "mode": "WEEKLY",
+  "items": [
+    {
+      "title": "Rural South Africa does not need six towers to have a choice",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNaUljZ0xRajRUbnRiOW82TjhoQk9KRHNxRVJDMWo4cmQydXVjVUJXand5bXJNNzlLWTNjRExUZGFZdDRhLXAwckNrSWJWVkowNUtfSEFtQ3VScmxpa3Jpc3JtbGpHSll1bl9FXzNZYXYtdUc3dUMyMjVqMHY2X2QtUERyNnV5VzFLZm9kLU5oZ1ByUQ?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "评论文章讨论南非竞争委员会应否批准ACT代表成员申请的五年农村网络部署豁免，涉及运营商共享基础设施与竞争平衡。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Icasa to investigate what South Africans pay to communicate",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPTGpPMVZvZDMyZjVGWDF0MFd2YnhrVVI4LWNfZ29uS3Z4SjhrM0xYUHAyNXFSY0xMSkRYa0J0cUw0MkQyVzk1ZFUtend0bGFWSk8wdGdtRTZrSmtzMVluVFZrd0NWRHlQMy1OM3VWR3pReWFILWRJZ2NzSV9UNUx2N0tpTQ?oc=5",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": null,
+      "summary_cn": "南非通信监管机构Icasa宣布对电信服务可负担性进行市场调查，关注低收入群体和农村地区，可能影响监管政策。",
+      "strategic_advice_cn": "运营商应准备提交成本数据，评估资费结构，并考虑推出针对低收入市场的套餐以应对潜在监管压力。",
+      "sentiment": "neutral",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "Rural South Africans should not have to trade competition for coverage",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNSnFFOXVSSFVRUk1rNmJ1SGFDSl9SaEktbmhUZ0prNEJ4OFFBS0wyTXhNNGNZeG1BVU1DM29tWVlQenRabkJWZlkzNGIwOGZtVlJRYnlnUWFDYmpXZ3JaeW9xUl9NdXNhX2hkdjhtclM3NTBwYUlDSnVZaGxuaHlqZQ?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "评论反对ACT申请五年豁免以协调农村基础设施部署，认为可能损害竞争，影响农村覆盖。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Teraco’s electricity consumption triples in four years",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBfRlpNWTdCQzVnRkJoU3lkaUZpWkxQODNUaFYwNlhxRlo3dFlGRnAwdGhuT05aTUoyZVBvUV9KejE0RldMVDJzVkR1Qlh3Q245ek9FNmsxZFVUN05uNXc0MkwtbS1BY1N3Ty0wcWhnTkpMTzAycXJ3ckViOEQ?oc=5",
+      "source": "TechCentral",
+      "tier": "T2",
+      "operator": "Teraco",
+      "summary_cn": "数据中心运营商Teraco电力消耗四年增三倍，可再生能源占比下降，依赖单一太阳能项目，影响南非数字基础设施可持续性。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.8,
+      "_had_full_content": true
+    },
+    {
+      "title": "If it quacks like a duck: Kganyago on regulating fintechs",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOVTZKMzdxdkVka2J6cHdMMFVBU3U0dkRsYlVaaVJtTEJzVWZ5ZnJVcGY2dmhGQnBONTI1aXJVNklzWDlMTG1NVlVnMndVenQ0bnVHSGpPamdyTm9QSGRKc2M1WXVPX1gyc180Yzk4UXFQY0o5Q1NiU1ExU3g3enZsSg?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "MTN",
+      "summary_cn": "南非储备银行拟将金融科技纳入与银行同等监管，国家支付系统法案将公开征求意见，MTN金融科技峰会讨论影响。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Paratus Uganda first to market with Starlink service",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxObDFvZFhneEx5VlRGRmJ3eE5kS0xoeTc0djMtNDZTWG1hbE5QMzNuUWxJRG5lWTBWMDQxYnpBclVKbUVFbVBBdExBZVRRcUdJSjN2WlU0OUFzNlo1bXhkQkV0N3BIaUVBakFOLXl3ZlBsRGMxQjRPNlNUQ0xNQ1hlOVdRUmo5NVJxc1F0T2pRdw?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Paratus",
+      "summary_cn": "Paratus Uganda推出Starlink服务，成为该国首家，为偏远地区企业提供卫星连接，扩展非洲市场。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.85,
+      "_had_full_content": true
+    },
+    {
+      "title": "Wiocc lands $300-million from Saudi and African backers",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5hMnJPemFsWkJqX0RtU1FxR0t6QnhJd1dWZ3JIc25rY2hUdmc0a0JBeTVUV25VSG4zb2J5Z01rR1VCNWNyajVuWmIybUNYTFM3U1JPN2hNbmlXQnZabFBLNlBKS3d0aFlETnVEVzBQM3NvczBRTFNxUA?oc=5",
+      "source": "TechCentral",
+      "tier": "T0",
+      "operator": "Wiocc Group",
+      "summary_cn": "Wiocc Group获得非洲金融公司和沙特Vision International共3亿美元投资，用于数据中心、光纤和海底电缆扩张，是其史上最大融资。",
+      "strategic_advice_cn": "南非运营商应关注Wiocc的扩张对批发市场的影响，评估合作或竞争策略，并考虑加强自身网络投资以应对。",
+      "sentiment": "positive",
+      "confidence": 0.95,
+      "_had_full_content": true
+    },
+    {
+      "title": "Ageing Safe cable prompts new R1.7-billion Indian Ocean link",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBkRVFITTJ0NkJnazRQUXZhN1RncTlORC1xUzBwYWxqc1Vqa0NQR2V2a21GNkVuMmp2WDlaMTNpcTNjb3IzWGs2NDBYc3A5U0pmN0xmdnBOdmxBTUJPeERoeHJFS3VVWEhNQl9mMnRFMjgzYnBlTFgyc084WVVmaEk?oc=5",
+      "source": "TechCentral",
+      "tier": "T1",
+      "operator": "Orange",
+      "summary_cn": "Orange宣布新建ReuNION海底电缆，连接留尼汪岛至南非，容量约320Tbit/s，投资1.7亿兰特，旨在替换老化电缆并增强区域连接。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": true
+    },
+    {
+      "title": "Cell C CEO misses the mark",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNaDJfdGpEZmo4cGd3OTlHWFFJT0l3enlaRXBpODgyN2lkV0ZtZjM5OGR6OVNhazhtc0p5a285Y2x3aUVkZ2habVM2aVdLaE0zYW9lZ1U5Z2xPclYyNS1WUzdHVXFYa0dtZnJPZzFZVFJwbF9HbmZVaXJRRl9Ga25sTzk2Yng?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Cell C",
+      "summary_cn": "Cell C CEO的言论或行动受到批评，可能涉及公司战略或市场表现，但具体内容不明。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "People prefer Vodacom and Capitec Connect in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOOHhwVFlGS1FWUTdrOXpmNU82elluSTZ4ejZPeWxNYXVoWTVaOHdNVFFjdENPbkxlZjJ6U3RiWlJlX0E3Mll3MU9peWpuUncyRVM5aFgtLVdSM2RQVDVfSzgtdnJNMURKaVl1Zm1CMWpnQ25HcU5SRDBxLTZKMGxhbWZNOE40OFNrYk0xd3daTWJtSjBrelVINmRtODdRZTJpM1U2ZE1BYUhveE9jLUE?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Vodacom",
+      "summary_cn": "南非用户偏好Vodacom和Capitec Connect，反映运营商市场表现。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.7,
+      "_had_full_content": false
+    },
+    {
+      "title": "Leadership shake up at South Africa’s state IT agency",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTkVtM0lpNzlERm0wcUFtT1FpdzF1TEJtNkRXeHpFbTJYRUN3ekwyeG82UnZhWU1lRnc4Q3o5d0FYUGJONC1OT1BqY0RRYWFzOVQ1Nng5am5nUHNpNC03ZlJNc1ZOS0Y2d0kxMGNPUTFUV3E4Sjg5a1FvcnNUMWItZnVNUUhraGpXVkFpcWRpcUZPazNiMkpvSTdkY1BtaU50WXF6SEdiRlN3dw?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非国家IT机构领导层变动，可能影响电信监管或政策。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "_had_full_content": false
+    },
+    {
+      "title": "Netflix and WhatsApp under investigation in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPWkt3NWFSU0pBSEVaUWtyczkwRVg5Y1NmSDltTERibmt0YXBsNkt2dUpKUFdPTkwzZklhTF9ZYTR5MThJdUlNUkpSSzhKZF9zODE5TXBDRXhlMzh4TGY1RkREZlpERnFPbTlPMFFqdkpRTFo4OWpFcGNDR0p4cS12YnpLMkk2cmFnRE8zY1JGdzZHVGEtUDNQX1c4TmpMZVp2T0xrS1NwYW5MOUxrakNsejJBYlZDUVNBa0E?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "Netflix和WhatsApp在南非受调查，可能涉及监管，但非电信核心。",
+      "strategic_advice_cn": "",
+      "sentiment": "neutral",
+      "confidence": 0.6,
+      "_had_full_content": false
+    },
+    {
+      "title": "Vodacom and MTN 5G hit a milestone in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPeXZCNGJhbFpTcnYzVDRTbUxDWEtnTGt5WlpvNXU2U0oxbzExS2dDSGIwaGU3c2tVVkRLS0d6MTVKNHdnZE43NUR0TjNsbktNTmFxU0JNZjhXc19qam9Ca3VQSkhlV2dvX1J1T2t2bUNHZk9aS2FaYkdkdVk1V3JSVEl4eHZZUDFud09LamRIZEp0ZW9TMm1mVnJsYnI?oc=5",
+      "source": "MyBroadband",
+      "tier": "T0",
+      "operator": "Vodacom, MTN",
+      "summary_cn": "Vodacom和MTN的5G在南非达到里程碑，可能涉及用户数或覆盖突破，影响市场格局。",
+      "strategic_advice_cn": "关注5G里程碑具体数据，评估对市场份额影响，考虑投资网络优化和覆盖扩展以保持竞争力。",
+      "sentiment": "positive",
+      "confidence": 0.9,
+      "_had_full_content": false
+    }
+  ]
+}
