@@ -1,4 +1,5 @@
 import requests
+import os
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
@@ -301,6 +302,35 @@ def scrape_google_rss(source_name, query, days="1d"):
         print(f"❌ {source_name} (Google) Error: {e}")
     return articles
 
+def get_effective_time_range(mode, fallback_days_int):
+    """
+    DAILY 模式不再死板用"过去1天"，而是看上次成功归档到今天隔了几天，自动往回补。
+    典型场景：周五跑完，周六/周日没有新增归档（编辑发稿本来就少甚至0篇），
+    周一如果还是死板查"过去1天"，会完全错过周末的内容。
+    自动补齐后，周一会自动查"过去3天"，把周末漏掉的一起捞回来。
+
+    上限设为 4 天，避免管道断很久之后一次性倒灌太多旧闻进 LLM。
+    """
+    if mode != "DAILY":
+        return fallback_days_int
+    history_dir = os.path.join(config.DATA_DIR, "history")
+    if not os.path.isdir(history_dir):
+        return fallback_days_int
+
+    dates = []
+    for fname in os.listdir(history_dir):
+        if fname.endswith(".json"):
+            try:
+                dates.append(datetime.strptime(fname[:-5], "%Y-%m-%d").date())
+            except ValueError:
+                continue
+    if not dates:
+        return fallback_days_int
+
+    gap = (datetime.now().date() - max(dates)).days
+    return max(fallback_days_int, min(gap, 4))
+
+
 def scrape_direct_rss(source_name, rss_url, days="1d"):
     articles = []
     print(f"--- [Direct RSS] 抓取 {source_name} (官方 / 过去 {days}) ---")
@@ -367,8 +397,18 @@ SOURCES = [
 
 def scrape_all():
     all_articles = []
-    current_days = config.TIME_RANGE
     mode = config.REPORT_MODE
+    try:
+        fallback_days_int = int(config.TIME_RANGE.replace("d", ""))
+    except ValueError:
+        fallback_days_int = 1
+
+    days_int = get_effective_time_range(mode, fallback_days_int)
+    current_days = f"{days_int}d"
+    if days_int > fallback_days_int:
+        print(f"📅 检测到上次归档距今 {days_int} 天，自动放宽抓取窗口为「过去{days_int}天」"
+              f"（避免周末/断跑导致漏抓）\n")
+
     print(f"🚀 启动爬虫 | 模式: {mode} | 时间范围: {current_days} | 数据源: {len(SOURCES)} 个\n")
 
     for src in SOURCES:
