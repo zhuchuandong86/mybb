@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-08",
+  "mode": "DAILY",
+  "items": [
+    {
+      "title": "Mobile contract prices are increasing faster than inflation in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPeXFuazVYcTB4ZUt0RElQYmlta0U0TEdDUC1nNkMyZXdNZS1SSUJ3Qm9nRXVNX3BTa1BxaURkOU1aY0Qyd29LRW00eG9QdnRXWTlGZWgwRnRPTFI2NkVWZGxHZk1UVXFTRE9KZGpQWnkzUl9xaUdtNGZRRTZzWEV6aWVrZDR3RGZkSkluZWJaRTAzM3lnTHMzRUxjSkFwcDNGMWJOQUNrYzZZMDNGc0JvcWluZngyZFRURGwxWjkwRENxTmdhdnc?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": null,
+      "summary_cn": "南非移动合同价格上涨速度超过通胀，涉及运营商资费变化，可能影响市场。",
+      "strategic_advice_cn": "",
+      "sentiment": "negative",
+      "confidence": 0.85,
+      "_had_full_content": false
+    },
+    {
+      "title": "People prefer Vodacom and Capitec Connect in South Africa",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOOHhwVFlGS1FWUTdrOXpmNU82elluSTZ4ejZPeWxNYXVoWTVaOHdNVFFjdENPbkxlZjJ6U3RiWlJlX0E3Mll3MU9peWpuUncyRVM5aFgtLVdSM2RQVDVfSzgtdnJNMURKaVl1Zm1CMWpnQ25HcU5SRDBxLTZKMGxhbWZNOE40OFNrYk0xd3daTWJtSjBrelVINmRtODdRZTJpM1U2ZE1BYUhveE9jLUE?oc=5",
+      "source": "MyBroadband",
+      "tier": "T1",
+      "operator": "Vodacom, Capitec Connect",
+      "summary_cn": "南非用户偏好调查显示Vodacom和Capitec Connect受欢迎，反映市场偏好。",
+      "strategic_advice_cn": "",
+      "sentiment": "positive",
+      "confidence": 0.8,
+      "_had_full_content": false
+    }
+  ]
+}
